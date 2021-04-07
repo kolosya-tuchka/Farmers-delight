@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Construction
+  - Enemy
+  - EnemySpawner
+  - Miner
+  - Zombie
+  - DefObj
+  - Gun
+  - UI
+  - Boss
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Enemy
+  - Player
+  - DefObj
+  - Obstacle
+  - Mask
+  - Trigger
+  - Black
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Constructions
+    uniqueID: 326036865
+    locked: 0
+  - name: Characters
+    uniqueID: 952842443
+    locked: 0
+  - name: UpLayerConstr
+    uniqueID: 193189519
+    locked: 0
+  - name: UI
+    uniqueID: 1807532071
+    locked: 0
