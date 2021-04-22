@@ -13,6 +13,7 @@ public class MenuBtns : MonoBehaviour
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 

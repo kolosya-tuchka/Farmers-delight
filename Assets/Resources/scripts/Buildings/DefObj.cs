@@ -7,7 +7,11 @@ public class DefObj : MonoBehaviour
     public HP hp;
     void Update()
     {
-        if (hp.healPoints <= 0) GameObject.Find("Inter Face").GetComponent<InterfaceManager>().GameOver();
+        if (hp.healPoints <= 0)
+        {
+            FindObjectOfType<InterfaceManager>().GetComponent<InterfaceManager>().GameOver();
+            FindObjectOfType<PlayerController>().GameOver();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

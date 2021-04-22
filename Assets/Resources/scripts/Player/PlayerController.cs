@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Use());
     }
 
-    void GameOver()
+    public void GameOver()
     {
         renderer.gameObject.transform.parent = transform.parent;
         GameObject.Destroy(gameObject);

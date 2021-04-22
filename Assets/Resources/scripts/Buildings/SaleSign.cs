@@ -86,6 +86,7 @@ public class SaleSign : MonoBehaviour
         pl.currentGun = (pl.currentGun + 1) % pl.gunCapacity;
         GameObject.Find("Weapon").GetComponent<GunManager>().ImageUpdate();
         player.GetComponent<PlayerController>().GunSwap();
+        player.GetComponent<PlayerController>().GunSwap();
 
         pl.coins -= sale.cost;
     }

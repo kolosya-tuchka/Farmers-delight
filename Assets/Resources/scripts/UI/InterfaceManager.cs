@@ -7,14 +7,12 @@ public class InterfaceManager : MonoBehaviour
 {
     Player player;
     public Text rounds, coins;
-    GameObject inGame, gameOver;
+    public GameObject inGame, menu, gameOver;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        inGame = gameObject.transform.Find("InGame").gameObject;
-        gameOver = gameObject.transform.Find("GameOver").gameObject;
         inGame.SetActive(true);
-        gameOver.SetActive(false);
+        menu.SetActive(false);
 
         GameObject.Find("Mobile").SetActive(SystemInfo.deviceType == DeviceType.Handheld);
     }
@@ -25,6 +23,10 @@ public class InterfaceManager : MonoBehaviour
         {
             rounds.text = GameObject.Find("Game Manager").GetComponent<RoundManager>().round.ToString();
             coins.text = player.coins.ToString();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ActiveMenu();
+            }
         }
         else Invoke("GameOver", 1);
     }
@@ -33,6 +35,11 @@ public class InterfaceManager : MonoBehaviour
     {
         inGame.SetActive(false);
         gameOver.SetActive(true);
-        //Destroy(player.gameObject);
+    }
+    public void ActiveMenu()
+    {
+        inGame.SetActive(!inGame.activeInHierarchy);
+        menu.SetActive(!menu.activeInHierarchy);
+        Time.timeScale = menu.activeInHierarchy ? 0 : 1;
     }
 }

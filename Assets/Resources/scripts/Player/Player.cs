@@ -11,12 +11,13 @@ public class Player : MonoBehaviour
     public int currentGun, gunCapacity;
     public GameObject target;
     public HP health = new HP();
-    public bool used;
+    public bool used, movable;
     private void Start()
     {
         kills = 0;
         coins = 0;
         reloadBoost = 1;
         shootingBoost = 1;
+        movable = true;
     }
 }

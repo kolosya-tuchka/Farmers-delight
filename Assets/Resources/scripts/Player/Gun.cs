@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     {
         rt = reloadTime / GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().reloadBoost;
         if (reloadProgress == rt) reloadProgress = 0;
-        if ( magazines > 0 && ((curAmmo == 0) || (Input.GetKeyDown(KeyCode.R) && !isReloading) || isReloading))
+        if ( magazines > 0 && curAmmo < maxAmmo && ((curAmmo == 0) || (Input.GetKeyDown(KeyCode.R) && !isReloading) || isReloading))
         {
             isReloading = true;
             reloadProgress += Time.deltaTime;
