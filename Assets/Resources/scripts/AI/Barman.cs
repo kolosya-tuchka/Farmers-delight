@@ -5,13 +5,14 @@ using UnityEngine;
 public class Barman : MonoBehaviour
 {
     RoundManager manager;
+    public GameObject barman;
     void Start()
     {
-        manager = GameObject.Find("Game Manager").GetComponent<RoundManager>();
+        manager = FindObjectOfType<RoundManager>();
     }
 
     void Update()
     {
-        gameObject.transform.Find("Barman").gameObject.SetActive(manager.isBreak);
+        barman.SetActive(manager.isBreak);
     }
 }

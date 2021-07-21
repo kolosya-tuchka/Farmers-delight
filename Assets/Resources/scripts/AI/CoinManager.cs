@@ -12,7 +12,7 @@ public class CoinManager : MonoBehaviour
     public GameObject particle;
     void Start()
     {
-        player = GameObject.Find("Player").gameObject;
+        player = FindObjectOfType<MPManager>().player;
         rigidbody = GetComponent<Rigidbody2D>();
         sound = GetComponent<AudioSource>();
         StartCoroutine(ToTrigger());

@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuBtns : MonoBehaviour
 {
+    public GameObject panel;
     public void Play()
     {
-        GameObject.Find("Panel").GetComponent<Animator>().SetTrigger("Triggered");
+        panel.GetComponent<Animator>().SetTrigger("Triggered");
         StartCoroutine(PlayGame());
     }
 

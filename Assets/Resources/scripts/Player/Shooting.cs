@@ -6,9 +6,9 @@ using MoreMountains.Feedbacks;
 public class Shooting : MonoBehaviour
 {
     public GameObject bullet;
-    Gun gun;
+    public Gun gun;
     public float shootRate;
-    float sR = 0, shootRate1;
+    public float sR = 0, shootRate1;
     public MMFeedbacks shotFeedback;
     ShootButton btn;
 
@@ -19,6 +19,20 @@ public class Shooting : MonoBehaviour
     }
 
     void Update()
+    {
+        ShotCheck();
+    }
+
+    public virtual void Shot()
+    {
+        var _bullet = Instantiate(bullet, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
+        _bullet.transform.SetParent(GameObject.Find("Bullets").transform);
+        sR += shootRate1;
+        gun.curAmmo--;
+        shotFeedback.PlayFeedbacks(transform.position);
+    }
+
+    public virtual void ShotCheck()
     {
         shootRate1 = shootRate / GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().shootingBoost;
         if (sR <= 0 && gun.curAmmo > 0 && !gun.isReloading)
@@ -49,14 +63,5 @@ public class Shooting : MonoBehaviour
             }
         }
         else if (sR > 0) sR -= Time.deltaTime;
-    }
-
-    void Shot()
-    {
-        var _bullet = Instantiate(bullet, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
-        _bullet.transform.SetParent(GameObject.Find("Bullets").transform);
-        sR += shootRate1;
-        gun.curAmmo--;
-        shotFeedback.PlayFeedbacks(transform.position);
     }
 }

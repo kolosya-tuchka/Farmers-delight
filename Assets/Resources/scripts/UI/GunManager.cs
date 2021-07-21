@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class GunManager : MonoBehaviour
 {
-    public Player player;
+    MPManager mp;
+
     GameObject gun;
     public Image progress, image;
     public Text magazineText;
     Gun gu;
+    Player player;
     void Start()
     {
+        mp = FindObjectOfType<MPManager>();
+
+        if (mp != null) player = mp.player.GetComponent<Player>();
+        else player = FindObjectOfType<Player>();
         StartCoroutine(ImageUpdate());
     }
 

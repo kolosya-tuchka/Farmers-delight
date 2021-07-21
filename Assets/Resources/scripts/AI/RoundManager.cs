@@ -8,7 +8,7 @@ public class RoundManager : MonoBehaviour
     public float timeToNextRound;
     /*[HideInInspector]*/ public float hp;
     [HideInInspector] public bool isBreak;
-    EnemyManager manager;
+    public EnemyManager manager;
     public RoundType roundType;
 
     public enum RoundType
@@ -36,7 +36,7 @@ public class RoundManager : MonoBehaviour
         if (timeToNextRound <= 0) NextRound();
     }
 
-    public void NextRound()
+    public virtual void NextRound()
     {
         if (isBreak)
         {
@@ -48,21 +48,12 @@ public class RoundManager : MonoBehaviour
             manager.enemiesOnScene += manager.enemiesOnScene / 5;
             hp *= 1.2f;
             manager.allEnemiesNow = manager.allEnemies;
-            if (round % 5 == 0)
-            {
-                roundType = RoundType.boss;
-                manager.StartCoroutine(manager.BossSpawn());
-            }
-            else
-            {
-                roundType = RoundType.simple;
-                manager.StartCoroutine(manager.EnemySpawn());
-            }
+            ChooseRoundType();
             timeToNextRound = 60;
         }
     }
 
-    IEnumerator CountDown()
+    public IEnumerator CountDown()
     {
         while (true)
         {
@@ -75,6 +66,20 @@ public class RoundManager : MonoBehaviour
             {
                 yield return null;
             }
+        }
+    }
+
+    public virtual void ChooseRoundType()
+    {
+        if (round % 5 == 0)
+        {
+            roundType = RoundType.boss;
+            manager.StartCoroutine(manager.BossSpawn());
+        }
+        else
+        {
+            roundType = RoundType.simple;
+            manager.StartCoroutine(manager.EnemySpawn());
         }
     }
 }

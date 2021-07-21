@@ -7,23 +7,18 @@ public class BulletFly : MonoBehaviour
     Rigidbody2D rigidbody;
     public int speed;
     Bullet bullet;
-    PlayerManager playerManager;
     public GameObject particle;
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         bullet = gameObject.GetComponent<Bullet>();
-        playerManager = GameObject.Find("Player Manager").GetComponent<PlayerManager>();
 
         GameObject.Destroy(gameObject, bullet.timeOfFlying);
-    }
 
-    void Update()
-    {
         rigidbody.velocity = transform.right * speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Construction") || collision.gameObject.CompareTag("DefObj"))
         {

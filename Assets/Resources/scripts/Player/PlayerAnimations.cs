@@ -11,7 +11,6 @@ public class PlayerAnimations : Animations
     {
         hp1 = GetComponent<HP>().healPoints;
         hp2 = hp1;
-        //renderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -20,7 +19,6 @@ public class PlayerAnimations : Animations
         if (hp1 < hp2)
         {
             damageFeedback.PlayFeedbacks(gameObject.transform.position);
-            //StartCoroutine(Hit());
         }
         hp2 = hp1;
     }

@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class WeaponController : MonoBehaviour
 {
     public Joystick joystick;
-    SpriteRenderer renderer;
+    public SpriteRenderer renderer;
     public Button shootBtn;
-    GameObject player;
+    public GameObject player;
+
     void Start()
     {
-        player = GameObject.Find("Player");
-        joystick = GameObject.Find("Gun Joystick").GetComponent<Joystick>();
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        OnStart();
     }
 
-    void FixedUpdate()
+    private void Update()
+    {
+        Controll();
+    }
+
+    public virtual void Controll()
     {
         switch (SystemInfo.deviceType)
         {
@@ -38,7 +42,13 @@ public class WeaponController : MonoBehaviour
                     break;
                 }
         }
+    }
 
-
+    public virtual void OnStart()
+    {
+        player = GameObject.Find("Player");
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+            joystick = GameObject.Find("Gun Joystick").GetComponent<Joystick>();
+        renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 }

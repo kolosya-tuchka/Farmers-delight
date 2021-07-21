@@ -12,12 +12,13 @@ public class Notices : MonoBehaviour
     {
         text = GetComponent<Text>();
         enemyManager = GameObject.Find("Game Manager").GetComponent<EnemyManager>();
-        roundManager = enemyManager.gameObject.GetComponent<RoundManager>();
+        roundManager = enemyManager.GetComponent<RoundManager>();
     }
 
     void Update()
     {
-        if (roundManager.isBreak)
+        if (roundManager.round == 0) text.text = null;
+        else if (roundManager.isBreak)
         {
             text.text = "Round " + roundManager.round.ToString() + " is over!"
             + "Next round starts in " + Mathf.FloorToInt(roundManager.timeToNextRound).ToString() + " seconds"

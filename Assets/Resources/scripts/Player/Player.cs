@@ -6,18 +6,17 @@ public class Player : MonoBehaviour
 {
     public float speed,reloadBoost, shootingBoost;
     public int kills, coins;
-    public PlayerManager.Players title;
     public List<Gun> guns;
     public int currentGun, gunCapacity;
-    public GameObject target;
+    public GameObject target, weapons;
     public HP health = new HP();
-    public bool used, movable;
+    public bool used, isAlive;
     private void Start()
     {
         kills = 0;
-        coins = 0;
+        coins = 1000;
         reloadBoost = 1;
         shootingBoost = 1;
-        movable = true;
+        isAlive = true;
     }
 }

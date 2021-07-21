@@ -5,13 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Joystick joystick;
-    Vector2 Mvm;
-    Rigidbody2D rigidbody;
     public SpriteRenderer renderer;
     public Animator animator;
-    Player player;
+
+    [HideInInspector]
+    public Player player;
+    [HideInInspector]
+    public Vector2 Mvm;
+    [HideInInspector]
+    public Rigidbody2D rigidbody;
+
     int x, y;
     float time = 1;
+
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -41,7 +47,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T)) GunSwap();
     }
 
-    void CheckMove()
+    public virtual void CheckMove()
     {
         Mvm = new Vector2(0, 0);
 
@@ -76,14 +82,15 @@ public class PlayerController : MonoBehaviour
         else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             Mvm = joystick.Direction.normalized;
-            renderer.flipX = joystick.Horizontal < 0;
+            if (joystick.Horizontal < 0) renderer.flipX = true;
+            else if (joystick.Horizontal > 0) renderer.flipX = false;
         }
         if (Mvm.x != 0 || Mvm.y != 0) animator.SetBool("isMoving", true);
         else animator.SetBool("isMoving", false);
         rigidbody.velocity = Mvm * player.speed;
     }
 
-    public void GunSwap()
+    public virtual void GunSwap()
     {
         if (player.guns.Count > 1)
         {
@@ -94,7 +101,7 @@ public class PlayerController : MonoBehaviour
             }
             player.guns[player.currentGun].gameObject.SetActive(true);
 
-            StartCoroutine(GameObject.Find("Weapon").GetComponent<GunManager>().ImageUpdate());
+            StartCoroutine(FindObjectOfType<GunManager>().ImageUpdate());
         }
     }
 
@@ -110,7 +117,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Use());
     }
 
-    public void GameOver()
+    public virtual void GameOver()
     {
         renderer.gameObject.transform.parent = transform.parent;
         GameObject.Destroy(gameObject);

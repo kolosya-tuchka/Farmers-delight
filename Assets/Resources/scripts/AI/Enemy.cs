@@ -27,25 +27,33 @@ public class Enemy : MonoBehaviour
         else behaviour = Enemy.Behaviour.attacker;
     }
 
-    public void Die()
+    [Photon.Pun.PunRPC]
+    public void Die(int index = -1)
     {
+        var player = FindObjectOfType<Player>();
+        if (index != -1)
+        {
+            var mp = FindObjectOfType<MPManager>();
+            player = mp.players[index].GetComponent<Player>();
+        }
+
         var agent = GetComponent<NavMeshAgent2D>();
         var rig = GetComponent<Rigidbody2D>();
         var manager = FindObjectOfType<EnemyManager>();
-        var player = GameObject.Find("Player").GetComponent<Player>();
         var dir = GetComponent<Directioner>();
         player.kills++;
         agent.enabled = false;
         rig.velocity = Vector2.zero;
         manager.enemiesOnSceneNow--;
-        var rounds = manager.gameObject.GetComponent<RoundManager>();
+        var rounds = manager.GetComponent<RoundManager>();
+
         if (tag == "Boss")
         {
-            //rounds.isBreak = true;
-            //foreach (var en in GameObject.FindGameObjectsWithTag("Enemy"))
-            //{
-            //    GameObject.Destroy(en);
-            //}
+            rounds.isBreak = true;
+            foreach (var en in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                GameObject.Destroy(en);
+            }
             dir.Drop();
         }
         if (rounds.roundType == RoundManager.RoundType.simple)

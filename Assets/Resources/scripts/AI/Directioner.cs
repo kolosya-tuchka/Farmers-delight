@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Directioner : MonoBehaviour
 {
-    Rigidbody2D dir;
-    Enemy enemy;
-    NavMeshAgent2D agent;
+    [HideInInspector] public Rigidbody2D dir;
+    [HideInInspector] public Enemy enemy;
+    [HideInInspector] public NavMeshAgent2D agent;
     [HideInInspector] public float repRate, timeOfPersuit, maxTimeOfPersuit;
-    GameObject obj, def;
+    [HideInInspector] public GameObject obj, def;
     public SpriteRenderer rend;
-    EnemyAnimations anim;
-    EnemyManager manager;
+    [HideInInspector] public EnemyAnimations anim;
+    [HideInInspector] public EnemyManager manager;
     void Start()
     {
         dir = gameObject.GetComponent<Rigidbody2D>();
@@ -23,8 +23,8 @@ public class Directioner : MonoBehaviour
         enemy.RandomBeh();
         enemy.state = Enemy.State.alive;
 
-        obj = GameObject.Find("Player");
-        def = GameObject.FindWithTag("DefObj");
+
+        def = FindObjectOfType<DefObj>().gameObject;
 
         anim = GetComponent<EnemyAnimations>();
 
@@ -42,24 +42,12 @@ public class Directioner : MonoBehaviour
 
     private void FixedUpdate()
     {
+        obj = FindObjectOfType<Player>().gameObject;
         if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
         {
             enemy.Die();
         }
-
-        timeOfPersuit += Time.deltaTime;
-        if (Vector2.Distance(obj.transform.position, gameObject.transform.position) > enemy.maxSeeDistance && timeOfPersuit >= maxTimeOfPersuit)
-        {
-            enemy.behaviour = Enemy.Behaviour.destroyer;
-            timeOfPersuit = 0;
-            maxTimeOfPersuit = 5;
-        }
-        else if (Vector2.Distance(obj.transform.position, gameObject.transform.position) <= enemy.seeDistance || timeOfPersuit >= maxTimeOfPersuit)
-        {
-            enemy.behaviour = Enemy.Behaviour.attacker;
-            timeOfPersuit = 0;
-            maxTimeOfPersuit = 5;
-        }
+        Check();
     }
 
     public IEnumerator Move()
@@ -73,24 +61,17 @@ public class Directioner : MonoBehaviour
         }
     }
 
-    void Attack()
+    public virtual void Attack()
     {
         rend.flipX = transform.position.x > obj.transform.position.x;
         var player = obj.GetComponent<HP>();
         player.healPoints -= enemy.damage;
         player.delayTimeLeft = player.delayOfRegeneration;
         anim.isAttack = true;
-        //if (player.healPoints <= 0) Destroy(obj, 0.5f);
-        //Stop();
         timeOfPersuit = 0;
     }
 
-    public void Stop()
-    {
-        dir.velocity = Vector2.zero;
-    }
-
-    public void Drop()
+    public virtual void Drop()
     {
         var coins = manager.GetComponent<Coins>();
         GameObject coin;
@@ -115,7 +96,7 @@ public class Directioner : MonoBehaviour
         }
     }
 
-    void PathToDef()
+    public virtual void PathToDef()
     {
         if (enemy.behaviour == Enemy.Behaviour.destroyer && def != null)
         {
@@ -135,7 +116,7 @@ public class Directioner : MonoBehaviour
         }
     }
 
-    void PathToPlayer()
+    public virtual void PathToPlayer()
     {
         if (enemy.behaviour == Enemy.Behaviour.attacker || def == null)
         {
@@ -147,6 +128,24 @@ public class Directioner : MonoBehaviour
             }
             else if (agent.destination != null) rend.flipX = agent.destination.x < transform.position.x;
             else rend.flipX = dir.velocity.x < 0;
+        }
+    }
+
+    public void Check()
+    {
+
+        timeOfPersuit += Time.deltaTime;
+        if (Vector2.Distance(obj.transform.position, gameObject.transform.position) > enemy.maxSeeDistance && timeOfPersuit >= maxTimeOfPersuit)
+        {
+            enemy.behaviour = Enemy.Behaviour.destroyer;
+            timeOfPersuit = 0;
+            maxTimeOfPersuit = 5;
+        }
+        else if (Vector2.Distance(obj.transform.position, gameObject.transform.position) <= enemy.seeDistance || timeOfPersuit >= maxTimeOfPersuit)
+        {
+            enemy.behaviour = Enemy.Behaviour.attacker;
+            timeOfPersuit = 0;
+            maxTimeOfPersuit = 5;
         }
     }
 }

@@ -5,21 +5,38 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    Player player;
+    public Player player;
     public Text rounds, coins;
-    public GameObject inGame, menu, gameOver;
+    public GameObject inGame, menu, gameOver, mobile;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         inGame.SetActive(true);
         menu.SetActive(false);
 
-        GameObject.Find("Mobile").SetActive(SystemInfo.deviceType == DeviceType.Handheld);
+        mobile.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
     void Update()
     {
-        if (player.health.healPoints > 0)
+        Check();
+    }
+
+    public virtual void GameOver()
+    {
+        inGame.SetActive(false);
+        gameOver.SetActive(true);
+    }
+    public virtual void ActiveMenu()
+    {
+        inGame.SetActive(!inGame.activeInHierarchy);
+        menu.SetActive(!menu.activeInHierarchy);
+        Time.timeScale = menu.activeInHierarchy ? 0 : 1;
+    }
+
+    public virtual void Check()
+    {
+        if (player.health.healPoints >= 0)
         {
             rounds.text = GameObject.Find("Game Manager").GetComponent<RoundManager>().round.ToString();
             coins.text = player.coins.ToString();
@@ -29,17 +46,5 @@ public class InterfaceManager : MonoBehaviour
             }
         }
         else Invoke("GameOver", 1);
-    }
-
-    public void GameOver()
-    {
-        inGame.SetActive(false);
-        gameOver.SetActive(true);
-    }
-    public void ActiveMenu()
-    {
-        inGame.SetActive(!inGame.activeInHierarchy);
-        menu.SetActive(!menu.activeInHierarchy);
-        Time.timeScale = menu.activeInHierarchy ? 0 : 1;
     }
 }
