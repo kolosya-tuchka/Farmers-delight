@@ -44,6 +44,8 @@ public class HP : MonoBehaviour
             {
                 healPoints += regenerationSpeed * Time.deltaTime;
             }
+
+            healPoints = Mathf.Clamp(healPoints, 0, maxHP);
         }
     }
 }

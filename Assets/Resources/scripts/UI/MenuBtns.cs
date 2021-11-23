@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuBtns : MonoBehaviour
 {
-    public GameObject panel;
+    public GameObject loadingScreen;
     public void Play()
     {
-        panel.GetComponent<Animator>().SetTrigger("Triggered");
+        loadingScreen.SetActive(true);
+        loadingScreen.GetComponent<Animator>().SetTrigger("Triggered");
         StartCoroutine(PlayGame());
     }
 
@@ -18,9 +19,14 @@ public class MenuBtns : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     IEnumerator PlayGame()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 }

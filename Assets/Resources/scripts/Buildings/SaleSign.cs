@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SaleSign : MonoBehaviour
 {
+    public GunManager weaponUI;
     public GunSale sale;
     public GameObject player;
     public Text text;
@@ -15,9 +16,7 @@ public class SaleSign : MonoBehaviour
     void Start()
     {
         sale = GetComponent<GunSale>();
-        image = transform.Find("WeaponImage").GetComponent<SpriteRenderer>();
         image.sprite = sale.gun.GetComponent<Gun>().model.sprite;
-        text = transform.Find("Cost").transform.Find("Text").GetComponent<Text>();
         text.text = sale.cost.ToString();
         text.gameObject.SetActive(false);
     }
@@ -50,16 +49,17 @@ public class SaleSign : MonoBehaviour
     {
         var pl = player.GetComponent<Player>();
         var gun = Instantiate(sale.gun);
-        gun.transform.parent = pl.weapons.transform;
+        gun.transform.parent = pl.weaponsPrefab.transform;
         gun.transform.localPosition = gun.GetComponent<Gun>().localPos;
-        if (pl.guns.Count == 1) player.GetComponent<PlayerController>().GunSwap();
-        if (pl.gunCapacity == pl.guns.Count)
+        if (pl.weapons.Count == 1) player.GetComponent<PlayerController>().GunSwap();
+        if (pl.gunCapacity == pl.weapons.Count)
         {
-            GameObject.Destroy(pl.guns[pl.currentGun].gameObject);
-            pl.guns.RemoveAt(pl.currentGun);
+            Destroy(pl.weapons[pl.currentGun].gameObject);
+            pl.weapons.RemoveAt(pl.currentGun);
         }
-        pl.guns.Add(gun.GetComponent<Gun>());
+        pl.weapons.Add(gun.GetComponent<Gun>());
         pl.currentGun = (pl.currentGun + 1) % pl.gunCapacity;
+        gun.GetComponent<Gun>().owner = pl;
         GameObject.Find("Weapon").GetComponent<GunManager>().ImageUpdate();
         player.GetComponent<PlayerController>().GunSwap();
         player.GetComponent<PlayerController>().GunSwap();
@@ -67,41 +67,40 @@ public class SaleSign : MonoBehaviour
         pl.coins -= sale.cost;
     }
 
-    public virtual void Restore()
+    public virtual void Restore(Gun gun)
     {
         var pl = player.GetComponent<Player>();
-        var g = pl.guns[pl.currentGun].GetComponent<Gun>();
-        g.magazines = g.maxMagazines;
+        if (gun.magazines == gun.maxMagazines) return;
+        gun.magazines = gun.maxMagazines;
 
         pl.coins -= sale.restoreCost;
     }
 
     public virtual void Check()
     {
-        if (player != null)
+        if (player == null) return;
+
+        var p = player.GetComponent<Player>();
+        Gun gun = null;   
+        state = BuyState.simple;
+
+        foreach (var g in p.weapons)
         {
-            var p = player.GetComponent<Player>();
-            var g = p.guns[p.currentGun];
-            if (g.name == sale.gun.GetComponent<Gun>().name)
+            if (g.weaponName == sale.gun.GetComponent<Gun>().weaponName)
             {
                 state = BuyState.restore;
-                text.text = sale.restoreCost.ToString();
-            }
-            else
-            {
-                state = BuyState.simple;
-                text.text = sale.cost.ToString();
+                gun = (Gun)g;
+                break;
             }
         }
 
-        if (player != null)
+        text.text = (state == BuyState.simple ? sale.cost : sale.restoreCost).ToString();
+
+        if (p.target == gameObject && (Input.GetKeyDown(KeyCode.F) || player.GetComponent<Player>().used))
         {
-            var pl = player.GetComponent<Player>();
-            if (pl.target == gameObject && (Input.GetKeyDown(KeyCode.F) || player.GetComponent<Player>().used))
-            {
-                if (pl.coins >= sale.cost && state == BuyState.simple) Buy();
-                else if (pl.coins >= sale.restoreCost && state == BuyState.restore) Restore();
-            }
+            if (p.coins >= sale.cost && state == BuyState.simple) Buy();
+            else if (p.coins >= sale.restoreCost && state == BuyState.restore) Restore(gun);
         }
     }
+
 }

@@ -2,55 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class MPPlayerController : PlayerController, IPunObservable
+public class MPPlayerController : PlayerController, IPunObservable 
 {
     PhotonView view;
     MPManager mp;
-    bool flipX;
 
-    void Start()
+    void Awake()
     {
         view = GetComponent<PhotonView>();
 
-        rigidbody = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         mp = FindObjectOfType<MPManager>();
-
         player.currentGun = 0;
-        //var gunz = GameObject.FindGameObjectsWithTag("Gun");
-        //foreach (var gun in gunz)
-        //{
-        //    if (gun.transform.parent.gameObject.transform.parent.gameObject == gameObject) player.guns.Add(gun.GetComponent<Gun>());
-        //}
+
+        gameObject.name = PhotonNetwork.NickName;
         GunSwap();
 
         GetComponent<PlayerAnimations>().enabled = view.IsMine;
 
-        if (view.IsMine) view.RPC("SyncOnStart", RpcTarget.Others, gameObject.name);
+        if (view.IsMine)
+            view.RPC("SyncOnStart", RpcTarget.AllViaServer, gameObject.name);
+        else
+        {
+            player.health.canRegenerate = false;
+        }
     }
 
     void Update()
     {
-        CheckMove();
-        if (player.health.healPoints <= 0) GameOver();
-        if (Input.GetKeyDown(KeyCode.T) && view.IsMine) view.RPC("GunSwap", RpcTarget.AllViaServer);
-        renderer.flipX = flipX;
-    }
 
-    public override void CheckMove()
-    {
-        if (!view.IsMine) return;
-        base.CheckMove();
-        flipX = renderer.flipX;
+        if (view.IsMine)
+        {
+            if (player.health.healPoints <= 0)
+            {
+                GameOver();
+                view.RPC("GameOver", RpcTarget.Others);
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GunSwap();
+            }
+        }
+
     }
 
     [PunRPC]
-    public override void GunSwap()
-    {
-        base.GunSwap();
-    }
-
     public override void GameOver()
     {
         mp.aliveCount--;
@@ -61,13 +61,21 @@ public class MPPlayerController : PlayerController, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(flipX);
+            stream.SendNext(player.rend.flipX);
             stream.SendNext(player.health.healPoints);
+            foreach (var g in player.weapons)
+            {
+                stream.SendNext(g.gameObject.activeInHierarchy);
+            }
         }
         else
         {
-            flipX = (bool)stream.ReceiveNext();
+            player.rend.flipX = (bool)stream.ReceiveNext();
             player.health.healPoints = (float)stream.ReceiveNext();
+            foreach (var g in player.weapons)
+            {
+                g.gameObject.SetActive((bool)stream.ReceiveNext());
+            }
         }
     }
 
@@ -75,7 +83,7 @@ public class MPPlayerController : PlayerController, IPunObservable
     void SyncOnStart(string nick)
     {
         gameObject.name = nick;
-        gameObject.transform.parent = FindObjectOfType<MPManager>().transform;
+        gameObject.transform.parent = mp.transform;
     }
-
+    
 }

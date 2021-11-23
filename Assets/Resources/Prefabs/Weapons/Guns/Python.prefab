@@ -10103,10 +10103,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 202955000649297620}
-  - component: {fileID: 2926746246062666090}
   - component: {fileID: 7054026327272658507}
   - component: {fileID: 6354228424308263887}
-  - component: {fileID: 4833788717439895765}
+  - component: {fileID: -8541524497177461357}
   m_Layer: 0
   m_Name: Python
   m_TagString: Gun
@@ -10132,20 +10131,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2926746246062666090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392234913263980792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c128b486e0c71346acc34486429f223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  shootBtn: {fileID: 0}
 --- !u!114 &7054026327272658507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10158,17 +10143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localPos: {x: 0, y: -0.15, z: 0}
+  model: {fileID: 3895598246182661664}
+  weaponName: python
+  attackRate: 4
+  canAttack: 0
   reloadTime: 3
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 6
   magazines: 0
   maxMagazines: 20
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: -0.15, z: 0}
-  model: {fileID: 3895598246182661664}
-  name: python
 --- !u!114 &6354228424308263887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10182,9 +10168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: b6e3bcef67260ee449a5fc0289855277, type: 3}
-  shootRate: 0.3
+  gun: {fileID: 0}
   shotFeedback: {fileID: 2491434487135446070}
---- !u!114 &4833788717439895765
+--- !u!114 &-8541524497177461357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10193,26 +10179,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6392234913263980792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceea5d59c11750f4e8deb2c47ff8bcb4, type: 3}
+  m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  VisionRadius: 10
-  VisionAngle: 1
-  Direction: {x: 0, y: 0, z: 0}
-  EulerAngles: {x: 0, y: 0, z: 0}
-  ShouldScanForTargets: 1
-  TargetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  ScanFrequencyInSeconds: 1
-  VisibleTargets: []
-  MeshDensity: 0.2
-  EdgePrecision: 3
-  EdgeThreshold: 0.5
-  VisionMeshFilter: {fileID: 2940790626590941078}
 --- !u!1 &6796084934751510841
 GameObject:
   m_ObjectHideFlags: 0

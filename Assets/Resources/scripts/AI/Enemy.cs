@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public interface IEnemy
+{
+    void Die(Player player);
+    void Die();
+
+}
+
+public class Enemy : MonoBehaviour, IEnemy
 {
     public HP hp;
     public float damage, seeDistance, attackDistance, speed, maxSeeDistance, repRate;
@@ -27,39 +34,23 @@ public class Enemy : MonoBehaviour
         else behaviour = Enemy.Behaviour.attacker;
     }
 
-    [Photon.Pun.PunRPC]
-    public void Die(int index = -1)
+    public void Die()
     {
         var player = FindObjectOfType<Player>();
-        if (index != -1)
-        {
-            var mp = FindObjectOfType<MPManager>();
-            player = mp.players[index].GetComponent<Player>();
-        }
 
+        Die(player);
+    }
+
+    public virtual void Die(Player player)
+    {
         var agent = GetComponent<NavMeshAgent2D>();
         var rig = GetComponent<Rigidbody2D>();
         var manager = FindObjectOfType<EnemyManager>();
-        var dir = GetComponent<Directioner>();
         player.kills++;
         agent.enabled = false;
         rig.velocity = Vector2.zero;
         manager.enemiesOnSceneNow--;
-        var rounds = manager.GetComponent<RoundManager>();
-
-        if (tag == "Boss")
-        {
-            rounds.isBreak = true;
-            foreach (var en in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                GameObject.Destroy(en);
-            }
-            dir.Drop();
-        }
-        if (rounds.roundType == RoundManager.RoundType.simple)
-        {
-           dir.Drop();
-        }
         state = Enemy.State.dead;
     }
+
 }

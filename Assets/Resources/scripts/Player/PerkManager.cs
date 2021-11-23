@@ -5,71 +5,80 @@ using UnityEngine.UI;
 
 public class PerkManager : MonoBehaviour
 {
-    bool canBuy;
     Perk perk;
-    Player player;
-    GameObject tips;
+    public Perks perks;
+    bool canBuy
+    {
+        get
+        {
+            return perks.player.coins >= perk.cost * perks.costMultiplation;
+        }
+    }
+
     void Start()
     {
         perk = GetComponent<Perk>();
-        player = GameObject.Find("Player").GetComponent<Player>();
-        tips = GameObject.Find("Tips");
+
+        switch (perk.type)
+        {
+            case Perk.Type.hp: perk.title = "healpoints boost "; break;
+            case Perk.Type.movement: perk.title = "movement boost "; break;
+            case Perk.Type.reload: perk.title = "reload boost "; break;
+            case Perk.Type.tap: perk.title = "shooting boost "; break;
+        }
     }
 
     void Update()
     {
-        if (canBuy && player.coins >= perk.cost && player.target == gameObject)
+        if (canBuy && perks.player.coins >= perk.cost && perks.player.target == gameObject)
         {
-            if (Input.GetKeyDown(KeyCode.F) || player.used)  Buy();
+            if (Input.GetKeyDown(KeyCode.F) || perks.player.used)  Buy();
         }
     }
 
     void Buy()
     {
-        GetComponent<SpriteRenderer>().sprite = perk.emptyMug;
-        switch (perk.title)
+        GetComponent<SpriteRenderer>().sprite = perks.emptyMug;
+        switch (perk.type)
         {
-            case Perk.Title.hp: player.health.maxHP *= 2; break;
-            case Perk.Title.movement: player.speed *= 1.5f; break;
-            case Perk.Title.reload: player.reloadBoost *= 2; break;
-            case Perk.Title.tap: player.shootingBoost *= 2; break;
+            case Perk.Type.hp: perks.player.health.maxHP *= 2; break;
+            case Perk.Type.movement: perks.player.speedBoost *= 1.35f; break;
+            case Perk.Type.reload: perks.player.reloadBoost *= 2.5f; break;
+            case Perk.Type.tap: perks.player.shootingBoost *= 2; break;
         }
-        player.coins -= perk.cost;
-        enabled = false;
+        perks.player.coins -= perk.cost * (int)perks.costMultiplation;
+        perks.costMultiplation *= 2;
+        perks.player.target = null;
+        perks.tips.UpdateTip(null);
+
+        var perkUI = Instantiate(perks.perkUIPrefab, perks.perksUI.transform);
+        perkUI.GetComponent<PerkUI>().image.color = perk.perkColor;
+        Destroy(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject == perks.player.gameObject)
         {
-            canBuy = true;
-            string text = null;
-            switch (perk.title)
-            {
-                case Perk.Title.hp: text = "healpoints boost "; break;
-                case Perk.Title.movement: text = "movement boost "; break;
-                case Perk.Title.reload: text = "reload boost "; break;
-                case Perk.Title.tap: text = "shooting boost "; break;
-            }
-            tips.GetComponent<Tips>().UpdateTip("Press F to buy a " + text + "for " + (perk.cost).ToString());
-            player.GetComponent<Player>().target = gameObject;
+            perks.tips.UpdateTip("Press F to buy a " + perk.title + "for " + (perk.cost * perks.costMultiplation).ToString());
+            perks.player.target = gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject == perks.player.gameObject)
         {
-            canBuy = false;
-            string text = null;
-            switch (perk.title)
-            {
-                case Perk.Title.hp: text = "healpoints boost "; break;
-                case Perk.Title.movement: text = "movement boost "; break;
-                case Perk.Title.reload: text = "reload boost "; break;
-                case Perk.Title.tap: text = "shooting boost "; break;
-            }
-            if (tips.GetComponent<Text>().text == "Press F to buy a " + text + "for " + (perk.cost).ToString()) GameObject.Find("Tips").GetComponent<Tips>().UpdateTip(null);
+            if (perks.player.target == gameObject)
+                perks.tips.UpdateTip(null);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (canBuy && perks.player.target == gameObject)
+        {
+            if (Input.GetKeyDown(KeyCode.F) || perks.player.used) Buy();
         }
     }
 

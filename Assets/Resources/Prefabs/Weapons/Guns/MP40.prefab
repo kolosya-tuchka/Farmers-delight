@@ -14598,9 +14598,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6730782637670633805}
   - component: {fileID: 6730782637670633807}
-  - component: {fileID: 6730782637670633806}
   - component: {fileID: 189864390512392837}
-  - component: {fileID: 4198119690840472834}
+  - component: {fileID: 2014322743966774500}
   m_Layer: 0
   m_Name: MP40
   m_TagString: Gun
@@ -14639,22 +14638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: 68d44e54267927f4bb20d39fd943e2cc, type: 3}
-  shootRate: 0.2
+  gun: {fileID: 0}
   shotFeedback: {fileID: 73168226261306800}
---- !u!114 &6730782637670633806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6730782637670633804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c128b486e0c71346acc34486429f223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  shootBtn: {fileID: 0}
 --- !u!114 &189864390512392837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14667,18 +14652,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localPos: {x: 0, y: -0.2, z: 0}
+  model: {fileID: 780774151162150486}
+  weaponName: mp40
+  attackRate: 8
+  canAttack: 0
   reloadTime: 3
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 32
   magazines: 0
   maxMagazines: 20
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: -0.2, z: 0}
-  model: {fileID: 780774151162150486}
-  name: mp40
---- !u!114 &4198119690840472834
+--- !u!114 &2014322743966774500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14687,26 +14673,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6730782637670633804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceea5d59c11750f4e8deb2c47ff8bcb4, type: 3}
+  m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  VisionRadius: 10
-  VisionAngle: 1
-  Direction: {x: 0, y: 0, z: 0}
-  EulerAngles: {x: 0, y: 0, z: 0}
-  ShouldScanForTargets: 1
-  TargetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  ScanFrequencyInSeconds: 1
-  VisibleTargets: []
-  MeshDensity: 0.2
-  EdgePrecision: 3
-  EdgeThreshold: 0.5
-  VisionMeshFilter: {fileID: 136258775969941254}
 --- !u!1 &6922011875175345967
 GameObject:
   m_ObjectHideFlags: 0

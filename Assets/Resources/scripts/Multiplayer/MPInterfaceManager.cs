@@ -29,11 +29,11 @@ public class MPInterfaceManager : InterfaceManager
             else if (mp.aliveCount <= 0) Invoke("GameOver", 1);
         }
 
-        else if (player.health.healPoints >= 0)
+        else if (mp.aliveCount > 0)
         {
             if (view.IsMine)
             {
-                rounds.text = GameObject.Find("Game Manager").GetComponent<RoundManager>().round.ToString();
+                rounds.text = rm.round.ToString();
                 coins.text = player.coins.ToString();
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -53,19 +53,16 @@ public class MPInterfaceManager : InterfaceManager
     {
         if (mp.aliveCount > 0) return;
         StopAllCoroutines();
-        deathWindow.SetActive(false);
         base.GameOver();
     }
 
     IEnumerator ShowAndHideDeathWindow()
     {
-        inGame.SetActive(false);
         deathWindow.SetActive(true);
 
         yield return null;
         yield return new WaitUntil(() => player.gameObject.activeInHierarchy);
 
-        inGame.SetActive(true);
         deathWindow.SetActive(false);
     }
 }

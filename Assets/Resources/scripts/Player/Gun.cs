@@ -2,38 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapon
 {
     public float reloadTime, reloadProgress, curAmmo, maxAmmo;
     public int magazines, maxMagazines;
-    [HideInInspector] public float rt;
     public bool isReloading;
-    public Vector3 localPos;
-    public SpriteRenderer model;
-    public string name;
+    public bool canReload
+    {
+        get
+        {
+            return (Input.GetKeyDown(KeyCode.R) || curAmmo == 0) && !isReloading && curAmmo != maxAmmo;
+        }
+    }
+
     void Start()
     {
         magazines = maxMagazines;
         curAmmo = maxAmmo;
         reloadProgress = 0;
         isReloading = false;
+        canAttack = true;
     }
 
-    void Update()
-    {
-        rt = reloadTime / GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().reloadBoost;
-        if (reloadProgress == rt) reloadProgress = 0;
-        if ( magazines > 0 && curAmmo < maxAmmo && ((curAmmo == 0) || (Input.GetKeyDown(KeyCode.R) && !isReloading) || isReloading))
-        {
-            isReloading = true;
-            reloadProgress += Time.deltaTime;
-            if (Mathf.Abs(rt - reloadProgress) < Time.deltaTime)
-            {
-                reloadProgress = rt;
-                isReloading = false;
-                curAmmo = maxAmmo;
-                magazines--;
-            }
-        }
-    }
+}
+
+public abstract class Weapon : MonoBehaviour
+{
+    public Player owner;
+    public Vector3 localPos;
+    public SpriteRenderer model;
+    public string weaponName;
+    public float attackRate;
+    public bool canAttack;
 }

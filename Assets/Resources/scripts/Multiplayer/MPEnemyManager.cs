@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class MPEnemyManager : EnemyManager
 {
-    string mpPath = "Multiplayer/";
+    string mpPath = "Multiplayer/Enemies/";
 
     public override void SpawnBoss()
     {

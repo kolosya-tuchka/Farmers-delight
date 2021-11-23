@@ -9,7 +9,7 @@ public class DefObj : MonoBehaviour
     {
         if (hp.healPoints <= 0)
         {
-            FindObjectOfType<InterfaceManager>().GetComponent<InterfaceManager>().GameOver();
+            FindObjectOfType<InterfaceManager>().GameOver();
             FindObjectOfType<PlayerController>().GameOver();
         }
     }

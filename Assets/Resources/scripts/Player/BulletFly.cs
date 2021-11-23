@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BulletFly : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    [HideInInspector]
+    public Rigidbody2D rigidbody;
+
+    [HideInInspector]
+    public Bullet bullet;
+
     public int speed;
-    Bullet bullet;
     public GameObject particle;
     void Start()
     {
@@ -27,17 +31,7 @@ public class BulletFly : MonoBehaviour
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            var enemy = collision.GetComponent<Enemy>();
-            enemy.behaviour = Enemy.Behaviour.attacker;
-            enemy.hp.healPoints -= bullet.damage;
-            var dir = enemy.GetComponent<Directioner>();
-            enemy.GetComponent<EnemyAnimations>().hit = true;
-            if (enemy.hp.healPoints <= 0)
-            {
-                collision.GetComponent<BoxCollider2D>().enabled = false;
-                GameObject.Destroy(enemy.gameObject, 30);
-                dir.StopAllCoroutines();
-            }
+            collision.GetComponent<Directioner>().TakeDamage(bullet.damage);
             var part = Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
             GameObject.Destroy(gameObject);
         }

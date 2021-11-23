@@ -64,7 +64,7 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                yield return null;
+                yield return new WaitUntil(() => timeToNextRound > 0 && isBreak);
             }
         }
     }

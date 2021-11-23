@@ -9750,6 +9750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f478df87d85901408d53c41abcb8b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  bullet: {fileID: 0}
   speed: 7
   particle: {fileID: 3861231838511625880, guid: d48a96bd450c15a42a78ee18af807b03,
     type: 3}
@@ -9948,6 +9950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f478df87d85901408d53c41abcb8b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  bullet: {fileID: 0}
   speed: 7
   particle: {fileID: 3861231838511625880, guid: d48a96bd450c15a42a78ee18af807b03,
     type: 3}
@@ -10146,6 +10150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f478df87d85901408d53c41abcb8b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  bullet: {fileID: 0}
   speed: 7
   particle: {fileID: 3861231838511625880, guid: d48a96bd450c15a42a78ee18af807b03,
     type: 3}

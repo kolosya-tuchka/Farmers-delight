@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 
-public class PlayerAnimations : Animations
+public class PlayerAnimations : MonoBehaviour
 {
-    float hp1, hp2;
     public MMFeedbacks damageFeedback;
-    void Start()
+    [SerializeField] Animator animator;
+
+    public void HitAhimation()
     {
-        hp1 = GetComponent<HP>().healPoints;
-        hp2 = hp1;
+        damageFeedback.PlayFeedbacks(transform.position);
     }
 
-    void Update()
+    public void MoveAnimation(Vector2 vel)
     {
-        hp1 = GetComponent<HP>().healPoints;
-        if (hp1 < hp2)
-        {
-            damageFeedback.PlayFeedbacks(gameObject.transform.position);
-        }
-        hp2 = hp1;
+        animator.SetBool("isMoving", vel != Vector2.zero);
     }
 }

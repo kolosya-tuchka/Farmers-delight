@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 
-public class EnemyAnimations : Animations
+public class EnemyAnimations : MonoBehaviour
 {
     NavMeshAgent2D agent;
     Rigidbody2D rig;

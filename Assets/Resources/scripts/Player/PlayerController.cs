@@ -1,108 +1,71 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Joystick joystick;
-    public SpriteRenderer renderer;
-    public Animator animator;
+    protected Player player;
+    protected Rigidbody2D rb;
 
-    [HideInInspector]
-    public Player player;
-    [HideInInspector]
-    public Vector2 Mvm;
-    [HideInInspector]
-    public Rigidbody2D rigidbody;
+    [SerializeField] protected LayerMask enemyMask;
+    public Enemy targetEnemy = null;
 
-    int x, y;
-    float time = 1;
-
-    void Start()
+    void Awake()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
-
         player.currentGun = 0;
-        var gunz = GameObject.FindGameObjectsWithTag("Gun");
-        foreach (var gun in gunz)
-        {
-            if (gun.transform.parent.gameObject.transform.parent.gameObject == gameObject) player.guns.Add(gun.GetComponent<Gun>());
-        }
         GunSwap();
-    }
-
-    void FixedUpdate()
-    {
-        CheckMove();
-
-        if (player.health.healPoints < 0) GameOver();
-        //if (time > 0) time -= Time.deltaTime;
-        //else if (player.healPoints < player.maxhp)
-        //{
-        //    player.healPoints += player.healSpeed;
-        //    time = 1;
-        //}
-
-        if (Input.GetKeyDown(KeyCode.T)) GunSwap();
-    }
-
-    public virtual void CheckMove()
-    {
-        Mvm = new Vector2(0, 0);
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                x = 1;
-                renderer.flipX = false;
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                x = -1;
-                renderer.flipX = true;
-            }
-            else x = 0;
-
-
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-            {
-                y = 1;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            {
-                y = -1;
-            }
-            else y = 0;
-
-            Mvm = new Vector2(x, y).normalized;
+            gameObject.AddComponent<PlayerMoves>();
+            gameObject.AddComponent<WeaponController>();
         }
-
         else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
-            Mvm = joystick.Direction.normalized;
-            if (joystick.Horizontal < 0) renderer.flipX = true;
-            else if (joystick.Horizontal > 0) renderer.flipX = false;
+            var mobile = FindObjectOfType<MobileUI>();
+            var moves = gameObject.AddComponent<PlayerMovesMobile>();
+            var weaponControls = gameObject.AddComponent<WeaponControllerMobile>();
+
+            moves.joystick = mobile.joystick.GetComponent<Joystick>();
         }
-        if (Mvm.x != 0 || Mvm.y != 0) animator.SetBool("isMoving", true);
-        else animator.SetBool("isMoving", false);
-        rigidbody.velocity = Mvm * player.speed;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T)) GunSwap();
     }
 
     public virtual void GunSwap()
     {
-        if (player.guns.Count > 1)
+        if (player.weapons.Count > 1)
         {
             player.currentGun = (player.currentGun + 1) % player.gunCapacity;
-            foreach (var gun in player.guns)
+            foreach (var gun in player.weapons)
             {
                 gun.gameObject.SetActive(false);
             }
-            player.guns[player.currentGun].gameObject.SetActive(true);
+            player.weapons[player.currentGun].gameObject.SetActive(true);
 
-            StartCoroutine(FindObjectOfType<GunManager>().ImageUpdate());
+            FindObjectOfType<GunManager>().ImageUpdate();
         }
+    }
+
+    public virtual Enemy GetEnemyNearby(float radius)
+    {
+        if (radius <= 0) return null;
+
+        var enemies = Physics2D.OverlapCircleAll(transform.position, radius, enemyMask);
+        foreach (var e in enemies)
+        {
+            if (e.GetComponent<Enemy>().state == Enemy.State.alive)
+            {
+                return e.GetComponent<Enemy>();
+            }
+        }
+        return null;
     }
 
     IEnumerator Use()
@@ -119,24 +82,17 @@ public class PlayerController : MonoBehaviour
 
     public virtual void GameOver()
     {
-        renderer.gameObject.transform.parent = transform.parent;
-        GameObject.Destroy(gameObject);
+        //GetComponent<Renderer>().gameObject.transform.parent = transform.parent;
+        Destroy(gameObject);
     }
 
-    public GameObject SearchClosestEnemy()
+    public void TakeDamage(float damage)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = enemies[0];
-        float dist = (transform.position - closest.transform.position).magnitude;
-        foreach (var en in enemies)
-        {
-            if ((transform.position - en.transform.position).magnitude < dist)
-            {
-                closest = en;
-                dist = (transform.position - en.transform.position).magnitude;
-            }
-        }
+        player.health.healPoints -= damage;
+        player.health.delayTimeLeft = player.health.delayOfRegeneration;
+        player.anim.HitAhimation();
 
-        return closest;
+        if (player.health.healPoints < 0) GameOver();
     }
+
 }

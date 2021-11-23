@@ -12,9 +12,6 @@ public class MPWeaponController : WeaponController
     {
         view = GetComponent<PhotonView>();
         OnStart();
-        var owner = mp.player.GetComponent<PhotonView>().Owner;
-        //GetComponent<PhotonView>().TransferOwnership(owner);
-
     }
 
     void Update()
@@ -24,16 +21,14 @@ public class MPWeaponController : WeaponController
 
     public override void Controll()
     {
-        if (!GetComponent<PhotonView>().IsMine) return;
+        if (!view.IsMine) return;
         base.Controll();
     }
 
     public override void OnStart()
     {
         mp = FindObjectOfType<MPManager>();
-        player = mp.player;
-        //joystick = GameObject.Find("Gun Joystick").GetComponent<Joystick>();
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        player = mp.player.GetComponent<Player>();
     }
 
     [PunRPC]
@@ -43,17 +38,19 @@ public class MPWeaponController : WeaponController
         var player = mp.players[playerIndex].GetComponent<Player>();
         int i = 0;
         bool placed = false;
-        foreach (var g in player.guns)
+        transform.parent = player.weaponsPrefab.transform;
+        foreach (var g in player.weapons)
         {
             if (g == null)
             {
-                player.guns[i] = GetComponent<Gun>(); 
+                player.weapons[i] = GetComponent<Gun>(); 
                 placed = true;
                 break;
             }
             ++i;
         }
-        if (!placed) player.guns.Add(GetComponent<Gun>());
+        if (!placed) player.weapons.Add(GetComponent<Gun>());
+        transform.localPosition = GetComponent<Gun>().localPos;
     }
 
 }

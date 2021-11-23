@@ -2,60 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
 public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
 {
-    [HideInInspector] public MPManager mp;
-    [HideInInspector] public Player killer;
+    protected MPManager mp;
+    protected Player killer;
+    protected PhotonView view;
+
+    void Awake()
+    {
+        def = FindObjectOfType<DefObj>();
+        anim = GetComponent<EnemyAnimations>();
+    }
 
     void Start()
     {
-        mp = FindObjectOfType<MPManager>();
-
-        enemy = GetComponent<Enemy>();
-        agent = GetComponent<NavMeshAgent2D>();
-        agent.speed = enemy.speed;
-        agent.stoppingDistance = enemy.attackDistance;
-        enemy.behaviour = Enemy.Behaviour.attacker;
-        enemy.state = Enemy.State.alive;
-        def = FindObjectOfType<DefObj>().gameObject;
-        manager = FindObjectOfType<EnemyManager>();
-        anim = GetComponent<EnemyAnimations>();
-
+        OnStart();
+        enemy = GetComponent<MPEnemy>();
         if (enemy.behaviour == Enemy.Behaviour.attacker) maxTimeOfPersuit = 10;
 
         if (PhotonNetwork.IsMasterClient)
         {
             StartCoroutine(Move());
         }
+        enemy.coins += Random.Range(-3, 6);
+        iEnemy = GetComponent<MPEnemy>();
+    }
 
-        if (CompareTag("Enemy"))
-        {
-            enemy.coins += Random.Range(-3, 6);
-        }
-
+    public override void OnStart()
+    {
+        mp = FindObjectOfType<MPManager>();
+        view = GetComponent<PhotonView>();
+        base.OnStart();
     }
 
     void FixedUpdate()
     {
-        obj = FindNearestPlayer()?.gameObject;
+        player = FindNearestPlayer()?.GetComponent<Player>();
 
-        if (PhotonNetwork.IsMasterClient && obj != null)
+        if (PhotonNetwork.IsMasterClient && player != null)
         {
             Check();
         }
+    }
 
-        if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead && killer != null)
+    public virtual void TakeDamage(float damage, Photon.Realtime.Player player)
+    {
+        enemy.behaviour = Enemy.Behaviour.attacker;
+        enemy.hp.healPoints -= damage;
+        anim.hit = true;
+
+        if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
         {
-            int i = mp.playerIndex;
-            GetComponent<PhotonView>().RPC("Die", RpcTarget.Others, i);
-            enemy.Die(i);
+            foreach (var p in mp.players)
+            {
+                if (p.GetComponent<PhotonView>().Owner == player)
+                {
+                    killer = mp.player.GetComponent<Player>();
+                    iEnemy.Die(killer);
+                    view.RPC("Die", RpcTarget.Others, mp.playerIndex);
+                    var rounds = manager.GetComponent<RoundManager>();
+                    if (rounds.roundType == RoundManager.RoundType.simple)
+                    {
+                        Drop();
+                    }
+                    MPEnemy.DestroyAfterTime(view, 30);
+                    break;
+                }
+            }
         }
     }
 
-    Transform FindNearestPlayer()
+    public Transform FindNearestPlayer()
     {
         Transform playerTransform = null;
         float minDistance = Vector2.Distance(transform.position, mp.players[0].transform.position);
@@ -75,7 +93,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
 
     public override void Attack()
     {
-        rend.flipX = transform.position.x > obj.transform.position.x;
+        rend.flipX = transform.position.x > player.transform.position.x;
         anim.isAttack = true;
         timeOfPersuit = 0;
         GetComponent<PhotonView>().RPC("MPAttack", RpcTarget.AllViaServer);
@@ -84,12 +102,12 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     [PunRPC]
     public void MPAttack()
     {
-        if (!obj.GetComponent<PhotonView>().IsMine) return;
-        var player = mp.player.GetComponent<HP>();
-        player.healPoints -= enemy.damage;
-        player.delayTimeLeft = player.delayOfRegeneration;
+        if (!player.GetComponent<PhotonView>().IsMine) return;
+        var pl = mp.player.GetComponent<HP>();
+        pl.healPoints -= enemy.damage;
+        pl.delayTimeLeft = pl.delayOfRegeneration;
 
-        if (player.healPoints <= 0) player.GetComponent<Player>().isAlive = false; 
+        if (pl.healPoints <= 0) player.GetComponent<Player>().isAlive = false; 
     }
 
     public override void Drop()
@@ -98,6 +116,21 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
         base.Drop();
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rend.flipX);
+            stream.SendNext(def.GetComponent<HP>().healPoints);
+            stream.SendNext(anim.isAttack);
+        }
+        else if (stream.IsReading)
+        {
+            rend.flipX = (bool)stream.ReceiveNext();
+            def.GetComponent<HP>().healPoints = (float)stream.ReceiveNext();
+            anim.isAttack = (bool)stream.ReceiveNext();
+        }
+    }
     public void OnOwnershipRequest(PhotonView targetView, Photon.Realtime.Player requestingPlayer)
     {
         throw new System.NotImplementedException();
@@ -112,21 +145,4 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     {
         throw new System.NotImplementedException();
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(rend.flipX);
-            stream.SendNext(def.GetComponent<HP>().healPoints);
-            stream.SendNext(anim.isAttack);
-        }
-        else
-        {
-            rend.flipX = (bool)stream.ReceiveNext();
-            def.GetComponent<HP>().healPoints = (float)stream.ReceiveNext();
-            anim.isAttack = (bool)stream.ReceiveNext();
-        }
-    }
-
 }

@@ -5,9 +5,6 @@ using Photon.Pun;
 
 public class MPBulletFly : BulletFly
 {
-    Rigidbody2D rigidbody;
-    Bullet bullet;
-
     Enemy enemy;
 
     void Start()
@@ -16,7 +13,7 @@ public class MPBulletFly : BulletFly
         bullet = gameObject.GetComponent<Bullet>();
 
         rigidbody.velocity = transform.right * speed;
-        StartCoroutine(DestroyAfterTime(bullet.gameObject, bullet.timeOfFlying));
+        StartCoroutine(MPEnemy.DestroyAfterTime(bullet.GetComponent<PhotonView>(), bullet.timeOfFlying));
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
@@ -30,34 +27,13 @@ public class MPBulletFly : BulletFly
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            enemy = collision.GetComponent<Enemy>();
-            enemy.behaviour = Enemy.Behaviour.attacker;
-            enemy.hp.healPoints -= bullet.damage;
-            var dir = enemy.GetComponent<MPDirectioner>();
-            enemy.GetComponent<EnemyAnimations>().hit = true;
-
-            if (enemy.hp.healPoints <= 0)
-            {
-                if (GetComponent<PhotonView>().IsMine)
-                {
-                    dir.killer = dir.mp.player.GetComponent<Player>();
-                }
-
-                collision.GetComponent<BoxCollider2D>().enabled = false;
-                StartCoroutine(DestroyAfterTime(enemy.gameObject, 30));
-                dir.StopAllCoroutines();
-            }
+            Photon.Realtime.Player player = GetComponent<PhotonView>().Owner;
+            var dir = collision.GetComponent<MPDirectioner>();
+            dir.TakeDamage(bullet.damage, player);
 
             var part = Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
-    }
-
-    IEnumerator DestroyAfterTime(GameObject obj, float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        PhotonNetwork.Destroy(obj);
     }
 
 }

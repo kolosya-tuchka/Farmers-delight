@@ -5249,10 +5249,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 202955000649297620}
-  - component: {fileID: 2926746246062666090}
   - component: {fileID: 7054026327272658507}
   - component: {fileID: 378637648927193202}
-  - component: {fileID: 7399338008999356591}
+  - component: {fileID: -2202161506383210485}
   m_Layer: 0
   m_Name: ShotgunMini
   m_TagString: Gun
@@ -5278,20 +5277,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2926746246062666090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392234913263980792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c128b486e0c71346acc34486429f223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  shootBtn: {fileID: 0}
 --- !u!114 &7054026327272658507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5304,17 +5289,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localPos: {x: 0, y: -0.15, z: 0}
+  model: {fileID: 4325325986962943118}
+  weaponName: mini shotgun
+  attackRate: 2.5
+  canAttack: 0
   reloadTime: 2
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 5
   magazines: 0
   maxMagazines: 25
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: -0.15, z: 0}
-  model: {fileID: 4325325986962943118}
-  name: minishotgun
 --- !u!114 &378637648927193202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5328,9 +5314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: a9ae0bce0d5303643af0d8a60219fd3a, type: 3}
-  shootRate: 0.8
+  gun: {fileID: 0}
   shotFeedback: {fileID: 7359660902130598122}
---- !u!114 &7399338008999356591
+--- !u!114 &-2202161506383210485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5339,26 +5325,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6392234913263980792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceea5d59c11750f4e8deb2c47ff8bcb4, type: 3}
+  m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  VisionRadius: 5
-  VisionAngle: 15
-  Direction: {x: 0, y: 0, z: 0}
-  EulerAngles: {x: 0, y: 0, z: 0}
-  ShouldScanForTargets: 1
-  TargetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  ScanFrequencyInSeconds: 1
-  VisibleTargets: []
-  MeshDensity: 0.2
-  EdgePrecision: 3
-  EdgeThreshold: 0.5
-  VisionMeshFilter: {fileID: 4465013766304498922}
 --- !u!1 &6521207396969739349
 GameObject:
   m_ObjectHideFlags: 0

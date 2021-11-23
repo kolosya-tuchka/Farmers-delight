@@ -21,6 +21,7 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         SpawnPlayer();
         isGameStarted = false;
+        aliveCount = 1;
 
         startButton.SetActive(PhotonNetwork.IsMasterClient);
     }
@@ -32,19 +33,29 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public override void OnLeftRoom()
     {
-        int i = 0;
-        while (players[i] != player) ++i;
-        players.RemoveAt(i);
-
         SceneManager.LoadScene(0);
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        player.GetComponent<PhotonView>().RPC("SyncOnStart", RpcTarget.Others, player.name);
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        if (isGameStarted)
+        {
+            int i = 0;
+            while (players[i].GetComponent<PhotonView>().Owner != otherPlayer) ++i;
+            players.RemoveAt(i);
+        }
     }
 
     void SpawnPlayer()
     {
         spawnPos = new Vector2(Random.Range(0, 6), Random.Range(8, 11));
         player = PhotonNetwork.Instantiate("Multiplayer/"+playerPrefab.name, spawnPos, Quaternion.identity);
-        player.transform.parent = this.transform;
-        player.name = PhotonNetwork.NickName;
+        player.transform.parent = transform;
 
         var camera = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         camera.Follow = player.transform;

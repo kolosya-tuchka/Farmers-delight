@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6288239016902284076}
   - component: {fileID: 6288239016902284074}
-  - component: {fileID: 6288239016902284075}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -140,19 +139,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.120285, y: 0.52077675}
   m_EdgeRadius: 0
---- !u!114 &6288239016902284075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6288239016902284077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4668bc96cdeb6144b73aa5d8e570c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!1 &6288239016964976482
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +378,8 @@ MonoBehaviour:
   sale: {fileID: 0}
   player: {fileID: 0}
   text: {fileID: 6288239017318760310}
-  image: {fileID: 0}
+  image: {fileID: 6288239016692339632}
+  state: 0
 --- !u!114 &6288239017059136697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 750
+  restoreCost: 0
   gun: {fileID: 6730782637670633804, guid: fcde8df612ae28d45bf5015c891af731, type: 3}
 --- !u!1 &6288239017318760296
 GameObject:

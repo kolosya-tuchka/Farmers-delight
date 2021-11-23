@@ -20,6 +20,8 @@ public class MPRoundManager : RoundManager
 
     void Update()
     {
+        if (mp.aliveCount <= 0) return;
+
         if (PhotonNetwork.IsMasterClient)
         {
             view.TransferOwnership(PhotonNetwork.MasterClient);

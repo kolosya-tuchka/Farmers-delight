@@ -5,4 +5,5 @@ using UnityEngine;
 public class Coins : MonoBehaviour
 {
     public GameObject[] coins;
+    public GameObject coinsParent;
 }

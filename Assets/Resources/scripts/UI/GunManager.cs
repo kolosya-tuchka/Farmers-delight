@@ -18,21 +18,20 @@ public class GunManager : MonoBehaviour
 
         if (mp != null) player = mp.player.GetComponent<Player>();
         else player = FindObjectOfType<Player>();
-        StartCoroutine(ImageUpdate());
+        ImageUpdate();
     }
 
     void Update()
     {
-        if (gu.isReloading) progress.fillAmount = gu.reloadProgress / gu.rt;
+        if (gu.isReloading) progress.fillAmount = gu.reloadProgress / gu.reloadTime;
         else progress.fillAmount = gu.curAmmo / gu.maxAmmo;
 
         magazineText.text = gu.magazines.ToString();
     }
 
-    public IEnumerator ImageUpdate()
+    public void ImageUpdate()
     {
-        yield return null;
-        gun = player.guns[player.currentGun].gameObject;
+        gun = player.weapons[player.currentGun].gameObject;
         gu = gun.GetComponent<Gun>();
         image.sprite = gu.model.sprite;
     }

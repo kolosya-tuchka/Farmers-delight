@@ -4,55 +4,51 @@ using UnityEngine;
 
 public class Directioner : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody2D dir;
-    [HideInInspector] public Enemy enemy;
-    [HideInInspector] public NavMeshAgent2D agent;
-    [HideInInspector] public float repRate, timeOfPersuit, maxTimeOfPersuit;
-    [HideInInspector] public GameObject obj, def;
-    public SpriteRenderer rend;
-    [HideInInspector] public EnemyAnimations anim;
-    [HideInInspector] public EnemyManager manager;
+    protected Rigidbody2D dir;
+    protected Enemy enemy;
+    protected IEnemy iEnemy;
+    protected NavMeshAgent2D agent;
+    protected float repRate, timeOfPersuit, maxTimeOfPersuit;
+    protected Player player;
+    protected DefObj def;
+    protected EnemyAnimations anim;
+    protected EnemyManager manager;
+    [SerializeField] protected SpriteRenderer rend;
     void Start()
     {
-        dir = gameObject.GetComponent<Rigidbody2D>();
+        enemy = GetComponent<Enemy>();
+        enemy.RandomBeh();
 
-        enemy = gameObject.GetComponent<Enemy>();
+        def = FindObjectOfType<DefObj>();
+        player = FindObjectOfType<Player>();
+
+        if (enemy.behaviour == Enemy.Behaviour.attacker) maxTimeOfPersuit = 10;
+
+        enemy.coins += Random.Range(-3, 6);
+        iEnemy = GetComponent<Enemy>();
+        OnStart();
+        StartCoroutine(Move());
+    }
+
+    public virtual void OnStart()
+    {
+        dir = gameObject.GetComponent<Rigidbody2D>();
         agent = GetComponent<NavMeshAgent2D>();
         agent.speed = enemy.speed;
         agent.stoppingDistance = enemy.attackDistance;
-        enemy.RandomBeh();
         enemy.state = Enemy.State.alive;
-
-
-        def = FindObjectOfType<DefObj>().gameObject;
-
+        manager = FindObjectOfType<EnemyManager>();
         anim = GetComponent<EnemyAnimations>();
-
-        if (enemy.behaviour == Enemy.Behaviour.attacker) maxTimeOfPersuit = 10;
-        StartCoroutine(Move());
-
-        manager = GameObject.Find("Game Manager").GetComponent<EnemyManager>();
-
-        if (CompareTag("Enemy"))
-        {
-            enemy.coins += Random.Range(-3, 6);
-            repRate =enemy.repRate + Random.Range(-0.1f, 0.1f);
-        }
     }
 
     private void FixedUpdate()
     {
-        obj = FindObjectOfType<Player>().gameObject;
-        if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
-        {
-            enemy.Die();
-        }
         Check();
     }
 
-    public IEnumerator Move()
+    public virtual IEnumerator Move()
     {
-        while (enemy.hp.healPoints > 0)
+        while (true)
         {
             yield return new WaitForSeconds(repRate);
             repRate = enemy.repRate;
@@ -61,12 +57,29 @@ public class Directioner : MonoBehaviour
         }
     }
 
+    public virtual void TakeDamage(float damage)
+    {
+        enemy.behaviour = Enemy.Behaviour.attacker;
+        enemy.hp.healPoints -= damage;
+        anim.hit = true;
+        if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
+        {
+            iEnemy.Die(player);
+            var rounds = manager.GetComponent<RoundManager>();
+            if (rounds.roundType == RoundManager.RoundType.simple)
+            {
+                Drop();
+            }
+            GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(this);
+            Destroy(enemy.gameObject, 30);
+        }
+    }
+
     public virtual void Attack()
     {
-        rend.flipX = transform.position.x > obj.transform.position.x;
-        var player = obj.GetComponent<HP>();
-        player.healPoints -= enemy.damage;
-        player.delayTimeLeft = player.delayOfRegeneration;
+        player.GetComponent<PlayerController>().TakeDamage(enemy.damage);
+        rend.flipX = transform.position.x > player.transform.position.x;
         anim.isAttack = true;
         timeOfPersuit = 0;
     }
@@ -74,41 +87,34 @@ public class Directioner : MonoBehaviour
     public virtual void Drop()
     {
         var coins = manager.GetComponent<Coins>();
-        GameObject coin;
+        int index = coins.coins.Length - 1;
         while (enemy.coins > 0)
         {
-            if (enemy.coins >= 10)
+            int cost = coins.coins[index].GetComponent<CoinManager>().cost;
+            while (enemy.coins >= cost)
             {
-                coin = Instantiate(coins.coins[0], transform.position, Quaternion.identity);
-                enemy.coins -= 10;
+                Instantiate(coins.coins[index], transform.position, Quaternion.identity, coins.coinsParent.transform);
+                enemy.coins -= cost;
             }
-            else if (enemy.coins >= 5)
-            {
-                coin = Instantiate(coins.coins[1], transform.position, Quaternion.identity);
-                enemy.coins -= 5;
-            }
-            else
-            {
-                coin = Instantiate(coins.coins[2], transform.position, Quaternion.identity);
-                enemy.coins -= 1;
-            }
-            coin.transform.parent = GameObject.Find("Coins").transform;
+            --index;
         }
     }
 
     public virtual void PathToDef()
     {
+
         if (enemy.behaviour == Enemy.Behaviour.destroyer && def != null)
         {
-            if (Vector2.Distance(obj.transform.position, gameObject.transform.position) <= enemy.seeDistance) enemy.behaviour = Enemy.Behaviour.attacker;
-            agent.destination = def.transform.position;
+            if (player != null && Vector2.Distance(player.transform.position, gameObject.transform.position) <= enemy.seeDistance)
+                enemy.behaviour = Enemy.Behaviour.attacker;
+            Vector2 dest = def.transform.position;
+            agent.destination = new Vector2(Random.Range(dest.x - 3, dest.x + 3), Random.Range(dest.y, dest.y + 2));
             if (enemy.canDestroy)
             {
                 anim.isAttack = true;
-                var defHP = def.GetComponent<HP>();
-                defHP.delayTimeLeft = defHP.delayOfRegeneration;
                 repRate = 1.5f;
-                def.GetComponent<DefObj>().hp.healPoints -= enemy.damage;
+                def.hp.delayTimeLeft = def.hp.delayOfRegeneration;
+                def.hp.healPoints -= enemy.damage;
                 timeOfPersuit = 0;
                 enemy.canDestroy = false;
             }
@@ -118,10 +124,12 @@ public class Directioner : MonoBehaviour
 
     public virtual void PathToPlayer()
     {
+        if (player == null) return;
+
         if (enemy.behaviour == Enemy.Behaviour.attacker || def == null)
         {
-            agent.destination = obj.transform.position;
-            if (Vector2.Distance(obj.transform.position, gameObject.transform.position) <= enemy.attackDistance)
+            agent.destination = player.transform.position;
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= enemy.attackDistance)
             {
                 Attack();
                 repRate = 1f;
@@ -133,15 +141,16 @@ public class Directioner : MonoBehaviour
 
     public void Check()
     {
+        if (player == null) return;
 
         timeOfPersuit += Time.deltaTime;
-        if (Vector2.Distance(obj.transform.position, gameObject.transform.position) > enemy.maxSeeDistance && timeOfPersuit >= maxTimeOfPersuit)
+        if (Vector2.Distance(player.transform.position, gameObject.transform.position) > enemy.maxSeeDistance && timeOfPersuit >= maxTimeOfPersuit)
         {
             enemy.behaviour = Enemy.Behaviour.destroyer;
             timeOfPersuit = 0;
             maxTimeOfPersuit = 5;
         }
-        else if (Vector2.Distance(obj.transform.position, gameObject.transform.position) <= enemy.seeDistance || timeOfPersuit >= maxTimeOfPersuit)
+        else if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= enemy.seeDistance && timeOfPersuit >= maxTimeOfPersuit)
         {
             enemy.behaviour = Enemy.Behaviour.attacker;
             timeOfPersuit = 0;

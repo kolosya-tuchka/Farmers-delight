@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    public Player player;
-    public Text rounds, coins;
-    public GameObject inGame, menu, gameOver, mobile;
+    [SerializeField] protected Player player;
+    [SerializeField] protected Text rounds, coins;
+    [SerializeField] protected GameObject inGame, menu, gameOver, mobile;
+    [SerializeField] protected RoundManager rm;
+
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = FindObjectOfType<Player>();
+    }
+
+    private void Awake()
+    {
         inGame.SetActive(true);
         menu.SetActive(false);
-
         mobile.SetActive(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
@@ -27,6 +32,7 @@ public class InterfaceManager : MonoBehaviour
         inGame.SetActive(false);
         gameOver.SetActive(true);
     }
+
     public virtual void ActiveMenu()
     {
         inGame.SetActive(!inGame.activeInHierarchy);
@@ -38,7 +44,7 @@ public class InterfaceManager : MonoBehaviour
     {
         if (player.health.healPoints >= 0)
         {
-            rounds.text = GameObject.Find("Game Manager").GetComponent<RoundManager>().round.ToString();
+            rounds.text = rm.round.ToString();
             coins.text = player.coins.ToString();
             if (Input.GetKeyDown(KeyCode.Escape))
             {

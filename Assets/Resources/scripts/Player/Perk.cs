@@ -5,9 +5,10 @@ using UnityEngine;
 public class Perk : MonoBehaviour
 {
     public int cost;
-    public Title title;
-    public Sprite emptyMug;
-    public enum Title
+    public Type type;
+    public Color perkColor;
+    [HideInInspector] public string title;
+    public enum Type
     {
         movement, hp, reload, tap
     }
