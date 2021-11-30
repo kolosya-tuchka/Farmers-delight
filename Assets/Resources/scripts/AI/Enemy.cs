@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour, IEnemy
         player.kills++;
         agent.enabled = false;
         rig.velocity = Vector2.zero;
+        GetComponent<BoxCollider2D>().enabled = false;
         manager.enemiesOnSceneNow--;
         state = Enemy.State.dead;
     }

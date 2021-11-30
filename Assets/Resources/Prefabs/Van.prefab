@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 885859485008693892}
   - component: {fileID: 885859485008693895}
   - component: {fileID: 885859485008693894}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859485098087280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7777, y: -0.8449, z: 0}
-  m_LocalScale: {x: 9.096355, y: 2.5236354, z: 1}
+  m_LocalPosition: {x: 0.6611, y: -0.7791, z: 0}
+  m_LocalScale: {x: 0.43152112, y: 0.273738, z: 1}
   m_Children: []
   m_Father: {fileID: 885859485847449664}
   m_RootOrder: 0
@@ -169,7 +169,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb26e2113d46a9647b79e2249de36f7a, type: 3}
+  m_Sprite: {fileID: 21300046, guid: e447093ef558f8a4ba40ac962b9d54ff, type: 3}
   m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: 952842443
   m_BackSortingLayerID: 952842443
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859485162602709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8429, y: -0.1956009, z: 0}
+  m_LocalPosition: {x: 0.509, y: -0.2, z: 0}
   m_LocalScale: {x: 0.7138497, y: 0.70923257, z: 1}
   m_Children: []
   m_Father: {fileID: 885859486214006889}
@@ -232,7 +232,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -288,10 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d115d263afd4a8428b4e685b3c5ab3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 300
+  type: 2
+  perkColor: {r: 0.35686275, g: 0.49803925, b: 0, a: 1}
   title: 2
-  emptyMug: {fileID: -5419054095881612983, guid: ea63e624400f72b45a479471b3c4e74e,
-    type: 3}
 --- !u!61 &885859485162602718
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03db493517bf568489b040c0dc419952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perks: {fileID: 1879361490}
 --- !u!1 &885859485251083708
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +342,7 @@ GameObject:
   - component: {fileID: 885859485251083709}
   - component: {fileID: 885859485251083707}
   - component: {fileID: 885859485251083706}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859485790545093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1915, y: -0.18670091, z: 0}
+  m_LocalPosition: {x: -0.852, y: -0.2, z: 0}
   m_LocalScale: {x: 0.7138497, y: 0.70923257, z: 1}
   m_Children: []
   m_Father: {fileID: 885859486214006889}
@@ -461,7 +462,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -517,10 +518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d115d263afd4a8428b4e685b3c5ab3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 150
+  cost: 100
+  type: 0
+  perkColor: {r: 0, g: 0.29411766, b: 0.5176471, a: 1}
   title: 0
-  emptyMug: {fileID: -5419054095881612983, guid: ea63e624400f72b45a479471b3c4e74e,
-    type: 3}
 --- !u!61 &885859485790545102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -559,6 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03db493517bf568489b040c0dc419952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perks: {fileID: 1879361490}
 --- !u!1 &885859485847449666
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +576,7 @@ GameObject:
   - component: {fileID: 885859485847449679}
   m_Layer: 0
   m_Name: Van
-  m_TagString: Untagged
+  m_TagString: Construction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,7 +588,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859485847449666}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.66, y: 10.83, z: 40.609146}
   m_LocalScale: {x: 1.363, y: 1.241929, z: 1}
   m_Children:
@@ -688,7 +690,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 193189519
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!114 &885859485847449679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1ed4dcbb6f26e439c9be2c7e937b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barman: {fileID: 885859486214006890}
 --- !u!1 &885859486214006890
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +717,7 @@ GameObject:
   - component: {fileID: 885859486214006891}
   - component: {fileID: 885859486214006903}
   - component: {fileID: 885859486214006902}
+  - component: {fileID: 1879361490}
   m_Layer: 0
   m_Name: Barman
   m_TagString: Untagged
@@ -758,7 +762,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -781,7 +785,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -8555099866140256210, guid: b86788c99fbbc1d4190a0ba622e50bb6,
     type: 3}
-  m_Color: {r: 0.2710039, g: 0.5471698, b: 0.4687656, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -848,6 +852,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aedb2dc2fe239445ad5ef7fef342dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1879361490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885859486214006890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606d0ae998c3c544287ccb4398359d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tips: {fileID: 0}
+  player: {fileID: 0}
+  perksUI: {fileID: 0}
+  perkUIPrefab: {fileID: 7709786656297379487, guid: 515cefe9a42a47045b98383a35e75ac1,
+    type: 3}
+  emptyMug: {fileID: -5419054095881612983, guid: ea63e624400f72b45a479471b3c4e74e,
+    type: 3}
+  costMultiplation: 0
 --- !u!1 &885859486439981583
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +901,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859486439981583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2788, y: -0.208, z: 0}
+  m_LocalPosition: {x: 1.129, y: -0.2, z: 0}
   m_LocalScale: {x: 0.7138497, y: 0.70923257, z: 1}
   m_Children: []
   m_Father: {fileID: 885859486214006889}
@@ -901,7 +925,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -957,10 +981,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d115d263afd4a8428b4e685b3c5ab3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 100
+  cost: 500
+  type: 1
+  perkColor: {r: 0.61960787, g: 0.08627451, b: 0.08627451, a: 1}
   title: 1
-  emptyMug: {fileID: -5419054095881612983, guid: ea63e624400f72b45a479471b3c4e74e,
-    type: 3}
 --- !u!61 &885859486439981576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -999,6 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03db493517bf568489b040c0dc419952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perks: {fileID: 1879361490}
 --- !u!1 &885859486525236266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885859486525236266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6077, y: -0.20540091, z: 0}
+  m_LocalPosition: {x: -0.179, y: -0.2, z: 0}
   m_LocalScale: {x: 0.7138497, y: 0.70923257, z: 1}
   m_Children: []
   m_Father: {fileID: 885859486214006889}
@@ -1052,7 +1077,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1108,10 +1133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d115d263afd4a8428b4e685b3c5ab3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 250
+  type: 3
+  perkColor: {r: 0.87843144, g: 0.73333335, b: 0, a: 1}
   title: 3
-  emptyMug: {fileID: -5419054095881612983, guid: ea63e624400f72b45a479471b3c4e74e,
-    type: 3}
 --- !u!61 &885859486525236279
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1150,6 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03db493517bf568489b040c0dc419952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perks: {fileID: 1879361490}
 --- !u!1 &885859486725561609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1228,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -14924,10 +14924,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6730782637670633805}
   - component: {fileID: -7571022314100309912}
-  - component: {fileID: -7276376288126725832}
   - component: {fileID: 189864390512392837}
   - component: {fileID: -2892456659699590412}
   - component: {fileID: -3057505783843043658}
+  - component: {fileID: -2322433139886072252}
   m_Layer: 0
   m_Name: Minigun
   m_TagString: Gun
@@ -14966,26 +14966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: ee095d0abeaa80d42b4be03df1514ca5, type: 3}
   gun: {fileID: 0}
-  shootRate: 0.1
-  sR: 0
-  shootRate1: 0
   shotFeedback: {fileID: 5564270144518170936}
---- !u!114 &-7276376288126725832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6730782637670633804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad269023e69e174fa56a34782ab8d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  renderer: {fileID: 0}
-  shootBtn: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &189864390512392837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14998,17 +14979,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  localPos: {x: 0, y: -0.2, z: 0}
+  model: {fileID: 2979464264896060707}
+  weaponName: 
+  attackRate: 0
+  canAttack: 0
   reloadTime: 5
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 100
   magazines: 0
   maxMagazines: 6
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: -0.2, z: 0}
-  model: {fileID: 2979464264896060707}
-  name: minigun
 --- !u!114 &-2892456659699590412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15065,3 +15048,15 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-2322433139886072252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6730782637670633804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

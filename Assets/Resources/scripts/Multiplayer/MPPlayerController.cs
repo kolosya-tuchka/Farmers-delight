@@ -24,7 +24,22 @@ public class MPPlayerController : PlayerController, IPunObservable
         GetComponent<PlayerAnimations>().enabled = view.IsMine;
 
         if (view.IsMine)
+        {
             view.RPC("SyncOnStart", RpcTarget.AllViaServer, gameObject.name);
+            if (SystemInfo.deviceType == DeviceType.Desktop)
+            {
+                gameObject.AddComponent<PlayerMoves>();
+                gameObject.AddComponent<WeaponController>();
+            }
+            else if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                var mobile = FindObjectOfType<MobileUI>();
+                var moves = gameObject.AddComponent<PlayerMovesMobile>();
+                var weaponControls = gameObject.AddComponent<WeaponControllerMobile>();
+
+                moves.joystick = mobile.joystick.GetComponent<Joystick>();
+            }
+        }
         else
         {
             player.health.canRegenerate = false;
@@ -33,27 +48,19 @@ public class MPPlayerController : PlayerController, IPunObservable
 
     void Update()
     {
+        if (!view.IsMine) return;
 
-        if (view.IsMine)
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            if (player.health.healPoints <= 0)
-            {
-                GameOver();
-                view.RPC("GameOver", RpcTarget.Others);
-            }
-
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                GunSwap();
-            }
+            GunSwap();
         }
-
     }
 
     [PunRPC]
     public override void GameOver()
     {
         mp.aliveCount--;
+        view.RPC("GameOver", RpcTarget.Others);
         gameObject.SetActive(false);
     }
 

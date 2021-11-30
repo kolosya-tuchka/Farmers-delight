@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4229397883050946725}
   - component: {fileID: 1274148711091923690}
   - component: {fileID: 410616118721149381}
-  - component: {fileID: 6217658173244172691}
   - component: {fileID: 5762450352438602635}
   - component: {fileID: 4612029101954625341}
+  - component: {fileID: 3410073530914188060}
   m_Layer: 0
   m_Name: Vintovka
   m_TagString: Gun
@@ -50,17 +50,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  localPos: {x: 0, y: -0.15, z: 0}
+  model: {fileID: 5405920985192001496}
+  weaponName: 
+  attackRate: 0
+  canAttack: 0
   reloadTime: 3.5
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 10
   magazines: 0
   maxMagazines: 15
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: -0.15, z: 0}
-  model: {fileID: 5405920985192001496}
-  name: rifle
 --- !u!114 &410616118721149381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,26 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: cb1919f734bdd264baf9245434d3bdef, type: 3}
   gun: {fileID: 0}
-  shootRate: 0.7
-  sR: 0
-  shootRate1: 0
   shotFeedback: {fileID: 3859183759744083326}
---- !u!114 &6217658173244172691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044917735047837567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad269023e69e174fa56a34782ab8d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  renderer: {fileID: 0}
-  shootBtn: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &5762450352438602635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +134,18 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &3410073530914188060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044917735047837567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2820812671598717365
 GameObject:
   m_ObjectHideFlags: 0

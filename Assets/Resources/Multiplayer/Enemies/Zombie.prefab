@@ -247,18 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8b56ec9ca80d349bb01563116bd157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dir: {fileID: 0}
-  agent: {fileID: 0}
-  repRate: 0
-  timeOfPersuit: 0
-  maxTimeOfPersuit: 0
-  obj: {fileID: 0}
-  def: {fileID: 0}
   rend: {fileID: 1567382910834635667}
-  anim: {fileID: 0}
-  manager: {fileID: 0}
-  mp: {fileID: 0}
-  killer: {fileID: 0}
 --- !u!114 &3869070317539006164
 MonoBehaviour:
   m_ObjectHideFlags: 0

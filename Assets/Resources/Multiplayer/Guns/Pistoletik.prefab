@@ -14601,10 +14601,10 @@ GameObject:
   m_Component:
   - component: {fileID: 202955000649297620}
   - component: {fileID: -1724722372399268588}
-  - component: {fileID: -7237691945764265644}
   - component: {fileID: 7054026327272658507}
   - component: {fileID: 5713376607829251294}
   - component: {fileID: 3326389191064158418}
+  - component: {fileID: 1791751109199190767}
   m_Layer: 0
   m_Name: Pistoletik
   m_TagString: Gun
@@ -14642,27 +14642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: 0810cfbf34026c04bb48c57df4d96ba8, type: 3}
-  gun: {fileID: 0}
-  shootRate: 0.3
-  sR: 0
-  shootRate1: 0
   shotFeedback: {fileID: 3889277748198449034}
---- !u!114 &-7237691945764265644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392234913263980792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad269023e69e174fa56a34782ab8d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  renderer: {fileID: 0}
-  shootBtn: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &7054026327272658507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14675,17 +14655,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 2
+  owner: {fileID: 0}
+  localPos: {x: 0, y: 0, z: 0}
+  model: {fileID: 2238179466530461850}
+  weaponName: pistol
+  attackRate: 4
+  canAttack: 0
+  reloadTime: 1
   reloadProgress: 0
   curAmmo: 0
   maxAmmo: 8
   magazines: 0
   maxMagazines: 20
-  rt: 0
   isReloading: 0
-  localPos: {x: 0, y: 0, z: 0}
-  model: {fileID: 2238179466530461850}
-  name: pistol
 --- !u!114 &5713376607829251294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14742,6 +14724,18 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &1791751109199190767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392234913263980792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8764919992180483417
 GameObject:
   m_ObjectHideFlags: 0

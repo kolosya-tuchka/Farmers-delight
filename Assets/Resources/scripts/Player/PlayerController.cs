@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         player.health.healPoints -= damage;
         player.health.delayTimeLeft = player.health.delayOfRegeneration;

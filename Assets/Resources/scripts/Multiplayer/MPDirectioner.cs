@@ -18,7 +18,6 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     void Start()
     {
         OnStart();
-        enemy = GetComponent<MPEnemy>();
         if (enemy.behaviour == Enemy.Behaviour.attacker) maxTimeOfPersuit = 10;
 
         if (PhotonNetwork.IsMasterClient)
@@ -31,6 +30,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
 
     public override void OnStart()
     {
+        enemy = GetComponent<MPEnemy>();
         mp = FindObjectOfType<MPManager>();
         view = GetComponent<PhotonView>();
         base.OnStart();
@@ -67,6 +67,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
                         Drop();
                     }
                     MPEnemy.DestroyAfterTime(view, 30);
+                    Destroy(this);
                     break;
                 }
             }
@@ -103,11 +104,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     public void MPAttack()
     {
         if (!player.GetComponent<PhotonView>().IsMine) return;
-        var pl = mp.player.GetComponent<HP>();
-        pl.healPoints -= enemy.damage;
-        pl.delayTimeLeft = pl.delayOfRegeneration;
-
-        if (pl.healPoints <= 0) player.GetComponent<Player>().isAlive = false; 
+        mp.player.GetComponent<MPPlayerController>().TakeDamage(enemy.damage);
     }
 
     public override void Drop()

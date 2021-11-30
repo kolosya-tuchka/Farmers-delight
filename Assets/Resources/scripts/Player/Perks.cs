@@ -15,6 +15,6 @@ public class Perks : MonoBehaviour
     {
         costMultiplation = 1;
         var mp = FindObjectOfType<MPManager>();
-        if (mp != null) mp.player.GetComponent<Player>();
+        if (mp != null) player = mp.player.GetComponent<Player>();
     }
 }

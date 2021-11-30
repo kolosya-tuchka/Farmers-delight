@@ -6,7 +6,7 @@ using MoreMountains.Feedbacks;
 public class Shooting : MonoBehaviour, IAttack
 {
     public GameObject bullet;
-    public Gun gun;
+    protected Gun gun;
     public MMFeedbacks shotFeedback;
 
     void Start()

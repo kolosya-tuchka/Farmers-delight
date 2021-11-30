@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    Gun gun;
+    protected Gun gun;
     void Awake()
     {
         gun = GetComponent<Gun>();
     }
 
-    IEnumerator ReloadCheck()
+    protected IEnumerator ReloadCheck()
     {
         while (true)
         {
@@ -33,7 +33,7 @@ public class GunController : MonoBehaviour
         }
     }
 
-    IEnumerator DelayCheck()
+    protected IEnumerator DelayCheck()
     {
         while (true)
         {

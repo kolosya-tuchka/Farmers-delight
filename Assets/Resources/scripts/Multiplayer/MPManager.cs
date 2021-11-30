@@ -58,7 +58,7 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
         player.transform.parent = transform;
 
         var camera = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
-        camera.Follow = player.transform;
+        camera.Follow = player.GetComponentInChildren<CameraMove>().transform;
 
         player.GetComponent<HP>().bar = HPBar.GetComponent<Image>();
     }

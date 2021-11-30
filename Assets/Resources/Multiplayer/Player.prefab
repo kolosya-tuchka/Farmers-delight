@@ -5802,12 +5802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a35900aa996374f9bf24c5102e0f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  renderer: {fileID: 3086380376853640943}
-  animator: {fileID: 3086380376853640940}
-  player: {fileID: 0}
-  Mvm: {x: 0, y: 0}
-  rigidbody: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 256
+  targetEnemy: {fileID: 0}
 --- !u!50 &7443853898635811916
 Rigidbody2D:
   serializedVersion: 4
@@ -5844,17 +5842,21 @@ MonoBehaviour:
   speed: 4
   reloadBoost: 0
   shootingBoost: 0
+  speedBoost: 0
   kills: 0
   coins: 0
-  guns:
+  weapons:
   - {fileID: 3608576031523574791}
   currentGun: 0
   gunCapacity: 2
-  target: {fileID: 0}
-  weapons: {fileID: 506433228916664436}
+  target: {fileID: 7488381231913025204}
+  weaponsPrefab: {fileID: 506433228916664436}
   health: {fileID: 3086380376221890698}
+  rend: {fileID: 3086380376853640943}
+  anim: {fileID: 3086380376221890701}
   used: 0
   isAlive: 0
+  focusDistance: 4
 --- !u!61 &7443853898635811907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5926,6 +5928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFeedback: {fileID: 3086380376379977236}
+  animator: {fileID: 3086380376853640940}
 --- !u!114 &4512524834254915533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6006,6 +6009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2472767495659337710}
+  - component: {fileID: 9020990227401241354}
   m_Layer: 9
   m_Name: CameraTarget
   m_TagString: Untagged
@@ -6027,6 +6031,19 @@ Transform:
   m_Father: {fileID: 7443853898635811918}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9020990227401241354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488381231913025204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2bff4da66b91949a8af6ecf3fbab62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7443853898635811913}
 --- !u!1001 &3086380378119350362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6141,15 +6158,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 820f183f1a2c8464ea7eefc9ab041539, type: 3}
---- !u!4 &5912351412486454178 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8708240742293869560, guid: 820f183f1a2c8464ea7eefc9ab041539,
-    type: 3}
-  m_PrefabInstance: {fileID: 3086380378119350362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &488840176358805210 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3178893815176259200, guid: 820f183f1a2c8464ea7eefc9ab041539,
+    type: 3}
+  m_PrefabInstance: {fileID: 3086380378119350362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5912351412486454178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8708240742293869560, guid: 820f183f1a2c8464ea7eefc9ab041539,
     type: 3}
   m_PrefabInstance: {fileID: 3086380378119350362}
   m_PrefabAsset: {fileID: 0}
@@ -6240,6 +6257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistoletik
       objectReference: {fileID: 0}
+    - target: {fileID: 7054026327272658507, guid: 8a1f79068ef3c8d41998b43835134890,
+        type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 7443853898635811906}
     m_RemovedComponents:
     - {fileID: 6782725740468284980, guid: 8a1f79068ef3c8d41998b43835134890, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8a1f79068ef3c8d41998b43835134890, type: 3}

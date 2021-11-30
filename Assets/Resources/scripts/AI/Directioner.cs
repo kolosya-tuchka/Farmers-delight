@@ -70,7 +70,6 @@ public class Directioner : MonoBehaviour
             {
                 Drop();
             }
-            GetComponent<BoxCollider2D>().enabled = false;
             Destroy(this);
             Destroy(enemy.gameObject, 30);
         }
