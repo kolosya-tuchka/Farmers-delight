@@ -7,10 +7,9 @@ public class GunManager : MonoBehaviour
 {
     MPManager mp;
 
-    GameObject gun;
     public Image progress, image;
     public Text magazineText;
-    Gun gu;
+    Weapon curWeapon;
     Player player;
     void Start()
     {
@@ -23,16 +22,24 @@ public class GunManager : MonoBehaviour
 
     void Update()
     {
-        if (gu.isReloading) progress.fillAmount = gu.reloadProgress / gu.reloadTime;
-        else progress.fillAmount = gu.curAmmo / gu.maxAmmo;
+        if (curWeapon.GetComponent<IReloadable>() != null)
+        {
+            Gun g = curWeapon.GetComponent<Gun>();
+            if (g.isReloading) progress.fillAmount = g.reloadProgress / g.reloadTime;
+            else progress.fillAmount = g.curAmmo / g.maxAmmo;
+            magazineText.text = g.magazines.ToString();
+        }
+        else
+        {
+            progress.fillAmount = 1;
+            magazineText.text = null;
+        }
 
-        magazineText.text = gu.magazines.ToString();
     }
 
     public void ImageUpdate()
     {
-        gun = player.weapons[player.currentGun].gameObject;
-        gu = gun.GetComponent<Gun>();
-        image.sprite = gu.model.sprite;
+        curWeapon = player.weapons[player.currentGun];
+        image.sprite = curWeapon.model.sprite;
     }
 }

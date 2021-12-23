@@ -14965,7 +14965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: ee095d0abeaa80d42b4be03df1514ca5, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 5564270144518170936}
 --- !u!114 &189864390512392837
 MonoBehaviour:
@@ -14981,9 +14980,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   localPos: {x: 0, y: -0.2, z: 0}
-  model: {fileID: 2979464264896060707}
-  weaponName: 
-  attackRate: 0
+  model: {fileID: 2979464264896060707, guid: 3d17c96fe9dd361459a30cc3245bf1c0, type: 3}
+  weaponName: minigun
+  attackRate: 10
   canAttack: 0
   reloadTime: 5
   reloadProgress: 0

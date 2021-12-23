@@ -14548,7 +14548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: 68d44e54267927f4bb20d39fd943e2cc, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 73168226261306800}
 --- !u!114 &189864390512392837
 MonoBehaviour:
@@ -14564,9 +14563,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   localPos: {x: 0, y: -0.2, z: 0}
-  model: {fileID: 780774151162150486}
-  weaponName: 
-  attackRate: 0
+  model: {fileID: 780774151162150486, guid: fcde8df612ae28d45bf5015c891af731, type: 3}
+  weaponName: mp40
+  attackRate: 8
   canAttack: 0
   reloadTime: 3
   reloadProgress: 0
