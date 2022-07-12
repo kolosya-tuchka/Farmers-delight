@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1274148711091923690}
   - component: {fileID: 410616118721149381}
   - component: {fileID: 5762450352438602635}
-  - component: {fileID: 4612029101954625341}
   - component: {fileID: 3410073530914188060}
+  - component: {fileID: 4537407258474109909}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Gun
@@ -56,6 +56,8 @@ MonoBehaviour:
   weaponName: rifle
   attackRate: 2
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 3.5
   reloadProgress: 0
   curAmmo: 0
@@ -96,11 +98,23 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 4612029101954625341}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4612029101954625341
+--- !u!114 &3410073530914188060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044917735047837567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4537407258474109909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,9 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 0
-    TeleportEnabled: 0
+    TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 3
+    InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
@@ -125,7 +139,7 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 1
+    InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
@@ -133,18 +147,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &3410073530914188060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044917735047837567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2820812671598717365
 GameObject:
   m_ObjectHideFlags: 0

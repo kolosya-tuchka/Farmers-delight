@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 100;
+        
         lobby.SetActive(false);
         start.SetActive(true);
     }

@@ -41,12 +41,12 @@ public class EnemyManager : MonoBehaviour
             SpawnBoss();
         StartCoroutine(EnemySpawnBoss());
 
-        yield return new WaitUntil(() => bossManager.curBossCount == 0);
-        foreach (var enemy in FindObjectsOfType<Directioner>())
+        yield return new WaitUntil(() => bossManager.curBossCount <= 0);
+        foreach (var enemy in FindObjectsOfType<Enemy>())
         {
-            enemy.TakeDamage(int.MaxValue);
+            enemy.Die(null);
         }
-        roundManager.isBreak = true;
+        allEnemiesNow = enemiesOnSceneNow = 0;
         ++bossManager.bossCount;
         bossManager.hpMultiplier *= 2;
         bossManager.coinsMultiplier *= 2;

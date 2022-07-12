@@ -22,7 +22,7 @@ public class EnemyAnimations : MonoBehaviour
     {
         animator.SetBool("IsMoving", agent.velocity.magnitude > 0 || rig.velocity.magnitude > 0);
 
-        if (enemy.hp.healPoints <= 0)
+        if (enemy.state == Enemy.State.dead)
         {
             animator.SetBool("IsDie", true);
         }

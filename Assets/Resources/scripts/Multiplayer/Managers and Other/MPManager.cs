@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using ExitGames.Client.Photon;
+using ExitGames.Client.Photon.StructWrapping;
 
 public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    public int playerIndex;
+    public static int playerIndex;
     public GameObject gameManager, playerPrefab, player, HPBar;
-    public List<GameObject> players;
+    public static List<GameObject> players;
     public bool isGameStarted;
     public GameObject startButton;
     public int aliveCount;
     Vector2 spawnPos;
+
+    [SerializeField] private PlayerListUI _playerListUI;
 
     void Awake()
     {
@@ -23,6 +27,7 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
         isGameStarted = false;
         aliveCount = 1;
 
+        players = new List<GameObject>();
         startButton.SetActive(PhotonNetwork.IsMasterClient);
     }
 
@@ -76,19 +81,39 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             startButton.SetActive(false);
         }
-        gameManager.GetComponent<MPRoundManager>().StartGame();
-
-        int i = 0;
+        
         var _players = FindObjectsOfType<Player>();
         foreach (var p in _players)
         {
-            if (p == player) playerIndex = i;
             players.Add(p.gameObject);
-            ++i;
+        }
+        players.Sort(delegate(GameObject cur, GameObject next)
+        {
+            return cur.GetComponent<PhotonView>().Owner.ActorNumber.CompareTo(next.GetComponent<PhotonView>().Owner.ActorNumber);
+        });
+        foreach (var p in players)
+        {
+            if (p.GetComponent<PhotonView>().IsMine)
+            {
+                playerIndex = players.IndexOf(p);
+                break;
+            }
         }
         aliveCount = players.Count;
+        gameManager.GetComponent<MPRoundManager>().StartGame();
+        _playerListUI.UpdatePlayerCards();
     }
 
+    public static int PlayerIndex(Player player)
+    {
+        return players.IndexOf(player.gameObject);
+    }
+
+    public static int PlayerIndex(Photon.Realtime.Player player)
+    {
+        return players.IndexOf(players.FirstOrDefault((p) => p.GetComponent<PhotonView>().Owner == player));
+    }
+    
     public void OnEvent(EventData photonEvent)
     {
         switch (photonEvent.Code)

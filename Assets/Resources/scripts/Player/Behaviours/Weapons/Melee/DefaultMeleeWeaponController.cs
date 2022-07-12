@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultMeleeWeaponController : WeaponController, IAttack
 {
-    DefaultMeleeWeapon weapon;
+    protected DefaultMeleeWeapon weapon;
     void Awake()
     {
         OnStart();
@@ -16,7 +16,7 @@ public class DefaultMeleeWeaponController : WeaponController, IAttack
         FixAnim();
     }
 
-    public void FixAnim()
+    public virtual void FixAnim()
     {
         Weapon curWeapon = player.weapons[player.currentGun];
         weapon.attackRangeCenter = curWeapon.transform.right * 0.6f;
@@ -25,21 +25,21 @@ public class DefaultMeleeWeaponController : WeaponController, IAttack
         weapon.anim.transform.rotation = curWeapon.transform.rotation;
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         if (!weapon.canAttack) return;
 
         var enemy = Physics2D.OverlapCircle(transform.position + (Vector3)weapon.attackRangeCenter, weapon.attackRange, player.GetComponent<PlayerController>().enemyMask);
-        if (enemy.GetComponent<Enemy>().state == Enemy.State.dead)
+        if (enemy?.GetComponent<Enemy>().state == Enemy.State.dead)
         {
             return;
         }
-        enemy.GetComponent<Directioner>().TakeDamage(weapon.damage);
+        enemy?.GetComponent<IDamage>().TakeDamage(weapon.damage);
         weapon.anim.SetTrigger("Attack");
         weapon.canAttack = false;
     }
 
-    IEnumerator DelayCheck()
+    protected IEnumerator DelayCheck()
     {
         while (true)
         {

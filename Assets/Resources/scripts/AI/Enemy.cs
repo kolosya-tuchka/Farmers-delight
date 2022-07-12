@@ -43,15 +43,23 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public virtual void Die(Player player)
     {
+        if (state == State.dead) return;
+
         var agent = GetComponent<NavMeshAgent2D>();
         var rig = GetComponent<Rigidbody2D>();
         var manager = FindObjectOfType<EnemyManager>();
-        player.kills++;
+        var dir = GetComponent<Directioner>();
         agent.enabled = false;
         rig.velocity = Vector2.zero;
         GetComponent<BoxCollider2D>().enabled = false;
         manager.enemiesOnSceneNow--;
         state = Enemy.State.dead;
+        dir?.StopAllCoroutines();
+
+        if (player != null)
+        {
+            player.kills++;
+        }
     }
 
 }

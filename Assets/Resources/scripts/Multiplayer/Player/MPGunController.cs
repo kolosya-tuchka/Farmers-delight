@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class MPGunController : GunController
 {
@@ -12,12 +13,14 @@ public class MPGunController : GunController
 
     private void Start()
     {
+        if (!GetComponent<PhotonView>().IsMine) return;
+        gun.owner.GetComponent<MPPlayerController>().GunSwap();
         mp = FindObjectOfType<MPManager>();
-        if (gun.owner != mp.player.GetComponent<Player>()) Destroy(this);
     }
 
     private void OnEnable()
     {
+        if (!GetComponent<PhotonView>().IsMine) return;
         StartCoroutine(ReloadCheck());
         StartCoroutine(DelayCheck());
     }
@@ -25,5 +28,21 @@ public class MPGunController : GunController
     private void OnDisable()
     {
         gun.isReloading = false;
+    }
+
+    [PunRPC]
+    public void Sync(int playerIndex, int weaponIndex)
+    {
+        var player = MPManager.players[playerIndex].GetComponent<Player>();
+
+        if (player.gunCapacity == player.weapons.Count)
+        {
+            if (weaponIndex == 0) player.weapons[weaponIndex].gameObject.SetActive(false);
+            player.weapons[weaponIndex] = gun;
+        }
+        else player.weapons.Add(gun);
+        
+        transform.parent = player.weaponsPrefab.transform;
+        transform.localPosition = gun.localPos;
     }
 }

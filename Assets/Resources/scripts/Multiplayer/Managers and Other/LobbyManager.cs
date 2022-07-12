@@ -13,18 +13,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         get
         {
-            return inputNick.text.Length >= 3;
+            return PhotonNetwork.NickName.Length >= 4;
         }
     }
 
     void Start()
     {
-        PhotonNetwork.NickName = "Slave №" + Random.Range(1000, 9999).ToString();
+        string nick = PlayerPrefs.GetString("nickname");
+        if (nick == null)
+        {
+            PhotonNetwork.NickName = "Slave №" + Random.Range(1000, 9999).ToString();
+        }
+        else
+        {
+            PhotonNetwork.NickName = nick;
+        }
+        inputNick.text = PhotonNetwork.NickName;
 
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.GameVersion = "Alpha 1.3";
+        PhotonNetwork.GameVersion = "Beta 1.1";
         PhotonNetwork.ConnectUsingSettings();
-
         CheckButtons();
     }
 
@@ -32,6 +40,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.NickName = inputNick.text;
         CheckButtons();
+    }
+
+    public void OnEndEdit()
+    {
+        PlayerPrefs.SetString("nickname", inputNick.text);
     }
 
     void CheckButtons()

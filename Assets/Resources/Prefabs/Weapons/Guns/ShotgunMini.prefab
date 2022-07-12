@@ -5289,11 +5289,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: -0.15, z: 0}
   model: {fileID: 4325325986962943118}
   weaponName: mini shotgun
   attackRate: 2.5
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 2
   reloadProgress: 0
   curAmmo: 0
@@ -5314,7 +5317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: a9ae0bce0d5303643af0d8a60219fd3a, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 7359660902130598122}
 --- !u!114 &-2202161506383210485
 MonoBehaviour:

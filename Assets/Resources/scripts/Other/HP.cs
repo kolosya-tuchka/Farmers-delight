@@ -7,18 +7,15 @@ public class HP : MonoBehaviour
     public float healPoints, maxHP, regenerationSpeed, delayOfRegeneration, delayTimeLeft;
     public bool canRegenerate;
     public Image bar;
-    void Start()
+    protected virtual void Start()
     {
         healPoints = maxHP;
     }
 
     
-    void Update()
+    protected virtual void Update()
     {
-        if (bar != null)
-        {
-            bar.fillAmount = healPoints / maxHP;
-        }
+        RenderHP();
 
         if (delayTimeLeft != 0)
         {
@@ -36,7 +33,15 @@ public class HP : MonoBehaviour
         }
     }
 
-    void Regeneration()
+    protected virtual void RenderHP()
+    {
+        if (bar != null)
+        {
+            bar.fillAmount = healPoints / maxHP;
+        }
+    }
+
+    protected void Regeneration()
     {
         if (delayTimeLeft == 0)
         {

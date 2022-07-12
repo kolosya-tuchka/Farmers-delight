@@ -22,17 +22,20 @@ public class MPBulletFly : BulletFly
 
         if (collision.gameObject.CompareTag("Construction") || collision.gameObject.CompareTag("DefObj"))
         {
-            var part = Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Boss")
         {
-            Photon.Realtime.Player player = GetComponent<PhotonView>().Owner;
+            var view = GetComponent<PhotonView>();
             var dir = collision.GetComponent<MPDirectioner>();
-            dir.TakeDamage(bullet.damage, player);
-
-            var part = Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(gameObject);
+            
+            Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
+            if (view.IsMine)
+            {
+                dir.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, (float)bullet.damage, MPManager.PlayerIndex(GetComponent<PhotonView>().Owner));
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 

@@ -296,14 +296,14 @@ GameObject:
   - component: {fileID: 1186432058835155817}
   - component: {fileID: 1186432058835155814}
   - component: {fileID: 1186432058835155816}
-  - component: {fileID: 1186432058835155819}
+  - component: {fileID: -614111797569325470}
   - component: {fileID: 630867763}
   - component: {fileID: 1162062848106446910}
-  - component: {fileID: 2684789211339548560}
   - component: {fileID: 9132691407142964445}
   - component: {fileID: 3221112554269528847}
   - component: {fileID: 8532068746595902735}
   - component: {fileID: 3618144244347968898}
+  - component: {fileID: -5565670473618846817}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Boss
@@ -368,7 +368,7 @@ MonoBehaviour:
   isAttack: 0
   hit: 0
   damageFeedback: {fileID: 7914182237752548221}
---- !u!114 &1186432058835155819
+--- !u!114 &-614111797569325470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186432058835155812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f06e47c3193ccef4b87efadb75729cfd, type: 3}
+  m_Script: {fileID: 11500000, guid: ab786bbb3fb186444b0173a75520ba18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 630867763}
@@ -436,31 +436,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14727068, y: 0.13249223}
   m_EdgeRadius: 0
---- !u!114 &2684789211339548560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186432058835155812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8b56ec9ca80d349bb01563116bd157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dir: {fileID: 0}
-  enemy: {fileID: 0}
-  agent: {fileID: 0}
-  repRate: 0
-  timeOfPersuit: 0
-  maxTimeOfPersuit: 0
-  obj: {fileID: 0}
-  def: {fileID: 0}
-  rend: {fileID: 6281591628352301635}
-  anim: {fileID: 0}
-  manager: {fileID: 0}
-  mp: {fileID: 0}
-  killer: {fileID: 0}
 --- !u!114 &9132691407142964445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,8 +489,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2684789211339548560}
   - {fileID: 3618144244347968898}
+  - {fileID: -5565670473618846817}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -534,13 +509,13 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 0.5
-    InterpolateOption: 3
-    InterpolateMoveTowardsSpeed: 1
+    TeleportIfDistanceGreaterThan: 1
+    InterpolateOption: 1
+    InterpolateMoveTowardsSpeed: 4
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 1
     ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateIncludingRoundTripTime: 0
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 0
@@ -552,6 +527,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-5565670473618846817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186432058835155812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd16268adfe773c469f9abc5bdf7febb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 6281591628352301635}
 --- !u!1 &7510563743667742848
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +552,8 @@ GameObject:
   - component: {fileID: 6281591628352301635}
   - component: {fileID: 3272257102861446484}
   - component: {fileID: 5134771396615648888}
+  - component: {fileID: 3381624060205735379}
+  - component: {fileID: 7763579430991551537}
   m_Layer: 8
   m_Name: BossModel
   m_TagString: Untagged
@@ -666,6 +656,59 @@ SortingGroup:
   m_SortingLayerID: 193189519
   m_SortingLayer: 3
   m_SortingOrder: 1
+--- !u!114 &3381624060205735379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510563743667742848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7763579430991551537}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7763579430991551537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510563743667742848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsMoving
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsDie
+  - Type: 9
+    SynchronizeType: 2
+    Name: Attack
+  - Type: 9
+    SynchronizeType: 2
+    Name: Hit
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &7738732065836640176
 GameObject:
   m_ObjectHideFlags: 0

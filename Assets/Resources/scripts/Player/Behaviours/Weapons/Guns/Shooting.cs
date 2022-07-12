@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour, IAttack
     protected Gun gun;
     protected DefaultMeleeWeapon defWeapon;
     public MMFeedbacks shotFeedback;
+    protected 
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class Shooting : MonoBehaviour, IAttack
 
     public virtual void Attack()
     {
-        var enemy = Physics2D.OverlapCircle(transform.position + defWeapon.localPos, defWeapon.attackRange, gun.owner.GetComponent<PlayerController>().enemyMask);
+        var enemy = Physics2D.OverlapCircle(transform.position + (Vector3)defWeapon.attackRangeCenter, defWeapon.attackRange, gun.owner.GetComponent<PlayerController>().enemyMask);
         if (enemy != null)
         {
             defWeapon.GetComponent<IAttack>().Attack();

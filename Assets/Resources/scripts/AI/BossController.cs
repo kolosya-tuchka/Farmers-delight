@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : Directioner
+public class BossController : Directioner, IDamage
 {
     void Start()
     {

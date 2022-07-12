@@ -2,12 +2,13 @@
 using UnityEngine;
 using Photon.Pun;
 
-public class MPBossController : MPDirectioner
+public class MPBossController : MPDirectioner, IMPDamage, IPunObservable
 {
     void Awake()
     {
         def = FindObjectOfType<DefObj>();
         anim = GetComponent<EnemyAnimations>();
+        enemy = GetComponent<Enemy>();
     }
 
     void Start()
@@ -42,26 +43,42 @@ public class MPBossController : MPDirectioner
         }
     }
 
-    public override void TakeDamage(float damage, Photon.Realtime.Player player)
+    [PunRPC]
+    public override void TakeDamage(float damage, int playerIndex)
     {
+        var player = MPManager.players[playerIndex].GetComponent<PhotonView>();
         enemy.hp.healPoints -= damage;
         anim.hit = true;
 
         if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
         {
-            foreach (var p in mp.players)
+            foreach (var p in MPManager.players)
             {
-                if (p.GetComponent<PhotonView>().Owner == player)
+                if (player.IsMine)
                 {
                     killer = mp.player.GetComponent<Player>();
-                    iEnemy.Die(killer);
-                    view.RPC("Die", RpcTarget.Others, mp.playerIndex);
+                    iEnemy.Die(playerIndex);
+                    view.RPC("Die", RpcTarget.Others, playerIndex);
                     Drop();
-                    MPEnemy.DestroyAfterTime(view, 30);
                     break;
                 }
             }
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(rend.flipX);
+            stream.SendNext(def.hp.healPoints);
+            stream.SendNext(anim.isAttack);
+        }
+        else if (stream.IsReading)
+        {
+            rend.flipX = (bool)stream.ReceiveNext();
+            def.hp.healPoints = (float)stream.ReceiveNext();
+            anim.isAttack = (bool)stream.ReceiveNext();
+        }
+    }
 }

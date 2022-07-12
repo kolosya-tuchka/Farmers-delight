@@ -6,7 +6,7 @@ public class MeleeWeaponController : MonoBehaviour
 {
     protected MeleeWeapon weapon;
 
-    float curSpeed;
+    protected float curSpeed;
 
     private void Awake()
     {

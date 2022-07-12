@@ -75,7 +75,7 @@ public class GunSale : WeaponSale
 
         foreach (var g in p.weapons)
         {
-            if (g.weaponName == sign.item.GetComponent<Gun>().weaponName)
+            if (g.weaponName == sign.item.GetComponent<Gun>()?.weaponName)
             {
                 state = BuyState.restore;
                 gun = (Gun)g;

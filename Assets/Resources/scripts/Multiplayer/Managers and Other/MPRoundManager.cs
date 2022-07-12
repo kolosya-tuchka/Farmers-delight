@@ -31,16 +31,19 @@ public class MPRoundManager : RoundManager
                 if (!isBreak && manager.allEnemiesNow <= 0 && manager.enemiesOnSceneNow <= 0)
                 {
                     isBreak = true;
+                    RespawnPlayers();
+                    view.RPC("RespawnPlayers", RpcTarget.Others);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) view.RPC("NextRound", RpcTarget.AllViaServer);
                 if (timeToNextRound <= 0) view.RPC("NextRound", RpcTarget.AllViaServer);
             }
 
-            object[] parametrs = new object[3];
-            parametrs[0] = manager.allEnemiesNow;
-            parametrs[1] = manager.enemiesOnSceneNow;
-            parametrs[2] = round;
-            view.RPC("Sync", RpcTarget.Others, parametrs);
+            object[] parameters = new object[4];
+            parameters[0] = manager.allEnemiesNow;
+            parameters[1] = manager.enemiesOnSceneNow;
+            parameters[2] = round;
+            parameters[3] = (int)roundType;
+            view.RPC("Sync", RpcTarget.Others, parameters);
         }
     }
 
@@ -53,13 +56,6 @@ public class MPRoundManager : RoundManager
     [PunRPC]
     public override void NextRound()
     {
-        mp.aliveCount = mp.players.Count;
-        foreach (var p in mp.players)
-        {
-            p.SetActive(true);
-            var hp = p.GetComponent<HP>();
-            hp.healPoints = hp.maxHP;
-        }
         base.NextRound();
     }
 
@@ -70,10 +66,24 @@ public class MPRoundManager : RoundManager
     }
 
     [PunRPC]
-    public void Sync(object[] parametrs)
+    void RespawnPlayers()
     {
-        manager.allEnemiesNow = (int)parametrs[0];
-        manager.enemiesOnSceneNow = (int)parametrs[1];
-        round = (int)parametrs[2];
+        mp.aliveCount = MPManager.players.Count;
+        foreach (var p in MPManager.players)
+        {
+            p.SetActive(true);
+            p.GetComponent<Player>().isAlive = true;
+            var hp = p.GetComponent<HP>();
+            hp.healPoints = hp.maxHP;
+        }
+    }
+    
+    [PunRPC]
+    public void Sync(object[] parameters)
+    {
+        manager.allEnemiesNow = (int)parameters[0];
+        manager.enemiesOnSceneNow = (int)parameters[1];
+        round = (int)parameters[2];
+        roundType = (RoundType)parameters[3];
     }
 }

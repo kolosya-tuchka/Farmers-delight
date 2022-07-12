@@ -5252,8 +5252,8 @@ GameObject:
   - component: {fileID: 8034078985716315248}
   - component: {fileID: 7054026327272658507}
   - component: {fileID: -4511603609226153466}
-  - component: {fileID: -442697318374228010}
   - component: {fileID: 2226829500421294387}
+  - component: {fileID: 8956118576596962089}
   m_Layer: 0
   m_Name: ShotgunMini
   m_TagString: Gun
@@ -5310,6 +5310,8 @@ MonoBehaviour:
   weaponName: mini shotgun
   attackRate: 2.5
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 2
   reloadProgress: 0
   curAmmo: 0
@@ -5336,11 +5338,23 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -442697318374228010}
+  - {fileID: 8956118576596962089}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-442697318374228010
+--- !u!114 &2226829500421294387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392234913263980792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8956118576596962089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5354,9 +5368,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 0
-    TeleportEnabled: 0
+    TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 3
+    InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
@@ -5365,7 +5379,7 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 1
+    InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
@@ -5373,18 +5387,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &2226829500421294387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392234913263980792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6846013153044269423
 GameObject:
   m_ObjectHideFlags: 0

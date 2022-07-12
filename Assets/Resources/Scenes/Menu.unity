@@ -1603,7 +1603,18 @@ MonoBehaviour:
   m_CharacterLimit: 16
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2009125739}
+        m_MethodName: OnEndEdit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3049,7 +3060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   restoreCost: 0
-  gun: {fileID: 6392234913263980792, guid: 0256a97f35ae70940880634f73af417f, type: 3}
+  item: {fileID: 0}
 --- !u!212 &3550993595721671534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5729,7 +5740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 250
   restoreCost: 0
-  gun: {fileID: 2044917735047837567, guid: 21a52963569b42348a74388affd2a14e, type: 3}
+  item: {fileID: 0}
 --- !u!1 &3550993596538335246
 GameObject:
   m_ObjectHideFlags: 0
@@ -7252,7 +7263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 250
   restoreCost: 0
-  gun: {fileID: 6392234913263980792, guid: 90e2909c72f0708459af259409d0dc84, type: 3}
+  item: {fileID: 0}
 --- !u!1 &3550993596745893039
 GameObject:
   m_ObjectHideFlags: 0
@@ -11619,7 +11630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1000
   restoreCost: 0
-  gun: {fileID: 6730782637670633804, guid: 3d17c96fe9dd361459a30cc3245bf1c0, type: 3}
+  item: {fileID: 0}
 --- !u!210 &3550993597173946686
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -49271,7 +49282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 500
   restoreCost: 0
-  gun: {fileID: 6730782637670633804, guid: fcde8df612ae28d45bf5015c891af731, type: 3}
+  item: {fileID: 0}
 --- !u!210 &3550993597702664190
 SortingGroup:
   m_ObjectHideFlags: 0

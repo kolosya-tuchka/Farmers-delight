@@ -10143,11 +10143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: -0.15, z: 0}
   model: {fileID: 3895598246182661664}
   weaponName: python
   attackRate: 4
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 3
   reloadProgress: 0
   curAmmo: 0
@@ -10168,7 +10171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: b6e3bcef67260ee449a5fc0289855277, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 2491434487135446070}
 --- !u!114 &-8541524497177461357
 MonoBehaviour:

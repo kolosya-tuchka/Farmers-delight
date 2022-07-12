@@ -59,8 +59,12 @@ public class MPPlayerController : PlayerController, IPunObservable
     [PunRPC]
     public override void GameOver()
     {
+        if (view.IsMine)
+        {
+            view.RPC("GameOver", RpcTarget.Others);
+        }
         mp.aliveCount--;
-        view.RPC("GameOver", RpcTarget.Others);
+        player.isAlive = false;
         gameObject.SetActive(false);
     }
 
@@ -74,6 +78,8 @@ public class MPPlayerController : PlayerController, IPunObservable
             {
                 stream.SendNext(g.gameObject.activeInHierarchy);
             }
+            stream.SendNext(player.kills);
+            stream.SendNext(player.isAlive);
         }
         else
         {
@@ -81,8 +87,10 @@ public class MPPlayerController : PlayerController, IPunObservable
             player.health.healPoints = (float)stream.ReceiveNext();
             foreach (var g in player.weapons)
             {
-                g.gameObject.SetActive((bool)stream.ReceiveNext());
+                g?.gameObject.SetActive((bool)stream.ReceiveNext());
             }
+            player.kills = (int)stream.ReceiveNext();
+            player.isAlive = (bool)stream.ReceiveNext();
         }
     }
 
@@ -92,5 +100,5 @@ public class MPPlayerController : PlayerController, IPunObservable
         gameObject.name = nick;
         gameObject.transform.parent = mp.transform;
     }
-    
+
 }

@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 8055099256382195741}
   - component: {fileID: -71424080567312048}
   m_Layer: 0
-  m_Name: Vintovka
+  m_Name: Rifle
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,11 +140,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: -0.15, z: 0}
   model: {fileID: 5405920985192001496}
   weaponName: rifle
   attackRate: 2
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 3.5
   reloadProgress: 0
   curAmmo: 0
@@ -165,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: cb1919f734bdd264baf9245434d3bdef, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 3859183759744083326}
 --- !u!114 &-71424080567312048
 MonoBehaviour:

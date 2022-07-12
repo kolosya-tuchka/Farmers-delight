@@ -4940,7 +4940,7 @@ SpriteRenderer:
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1.3333334, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
@@ -15055,7 +15055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: ee095d0abeaa80d42b4be03df1514ca5, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 5564270144518170936}
 --- !u!114 &189864390512392837
 MonoBehaviour:
@@ -15069,11 +15068,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: -0.2, z: 0}
   model: {fileID: 2979464264896060707}
   weaponName: minigun
   attackRate: 10
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 5
   reloadProgress: 0
   curAmmo: 0

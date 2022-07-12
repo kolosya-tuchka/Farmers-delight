@@ -7,7 +7,7 @@ public class MeleeAttack : MonoBehaviour, IAttack
 {
     protected MeleeWeapon weapon;
     [SerializeField] protected MMFeedbacks attackFeedback;
-    Player player;
+    protected Player player;
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class MeleeAttack : MonoBehaviour, IAttack
         player = weapon.owner;
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         if (!weapon.canAttack) return;
 
@@ -27,7 +27,7 @@ public class MeleeAttack : MonoBehaviour, IAttack
             {
                 continue;
             }
-            e.GetComponent<Directioner>().TakeDamage(weapon.damage);
+            e.GetComponent<IDamage>().TakeDamage(weapon.damage);
         }
         weapon.weaponAnimations.StartCoroutine(weapon.weaponAnimations.RotateWeapon(45, 1 / weapon.attackRate));
         weapon.anim.transform.position = transform.position + weapon.offset;

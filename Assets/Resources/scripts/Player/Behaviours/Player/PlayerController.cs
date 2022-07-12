@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         player.health.delayTimeLeft = player.health.delayOfRegeneration;
         player.anim.HitAhimation();
 
-        if (player.health.healPoints < 0) GameOver();
+        if (player.health.healPoints <= 0) GameOver();
     }
 
 }

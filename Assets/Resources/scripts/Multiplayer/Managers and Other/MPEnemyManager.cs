@@ -10,7 +10,6 @@ public class MPEnemyManager : EnemyManager
     public override void SpawnBoss()
     {
         var manager = GetComponent<BossManager>();
-        manager.hpMultiplier *= 2;
         var mas = GameObject.FindGameObjectsWithTag("EnemySpawner");
         var boss = PhotonNetwork.Instantiate(mpPath + manager.boss.name, mas[UnityEngine.Random.Range(0, mas.Length)].transform.position, Quaternion.identity);
         boss.GetComponent<HP>().maxHP *= manager.hpMultiplier;

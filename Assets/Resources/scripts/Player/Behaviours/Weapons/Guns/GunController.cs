@@ -19,7 +19,8 @@ public class GunController : MonoBehaviour, IReloadable
     {
         while (true)
         {
-            if (gun.canReload)
+            yield return null;
+            if (gun.canReload && gun.magazines > 0)
             {
                 gun.isReloading = true;
                 gun.reloadProgress = 0;
@@ -34,7 +35,6 @@ public class GunController : MonoBehaviour, IReloadable
                 gun.magazines--;
                 gun.curAmmo = gun.maxAmmo;
             }
-            yield return null;
         }
     }
 
@@ -42,12 +42,12 @@ public class GunController : MonoBehaviour, IReloadable
     {
         while (true)
         {
+            yield return null;
             if (!gun.canAttack)
             {
                 yield return new WaitForSeconds(1f / gun.attackRate / gun.owner.shootingBoost);
                 gun.canAttack = true;
             }
-            yield return null;
         }
     }
 

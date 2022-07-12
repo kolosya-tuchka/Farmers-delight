@@ -5135,11 +5135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: -0.15, z: 0}
   model: {fileID: 686461339011421419}
   weaponName: shotgun
   attackRate: 2
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 3
   reloadProgress: 0
   curAmmo: 0
@@ -5160,7 +5163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: db251b2918318444093da77dada1dd9f, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 7154259432697009118}
 --- !u!114 &-6402727803527836529
 MonoBehaviour:
@@ -5351,7 +5353,7 @@ SpriteRenderer:
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.9166667, y: 0.29166666}
   m_AdaptiveModeThreshold: 0.5

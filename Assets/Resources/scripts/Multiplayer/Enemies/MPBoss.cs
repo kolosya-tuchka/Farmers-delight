@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class MPBoss : Boss, IEnemy
+public class MPBoss : Boss, IMPEnemy
 {
-    public override void Die(Player player)
+    [PunRPC]
+    public void Die(int playerIndex)
     {
-        base.Die(player);
+        base.Die(MPManager.players[playerIndex].GetComponent<Player>());
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            StartCoroutine(MPEnemy.DestroyAfterTime(GetComponent<PhotonView>(), 30));
+        }
     }
 }

@@ -14509,8 +14509,8 @@ GameObject:
   - component: {fileID: 1650925874416198926}
   - component: {fileID: 189864390512392837}
   - component: {fileID: 397301253819749172}
-  - component: {fileID: 1730349901870924445}
   - component: {fileID: 646401083724792352}
+  - component: {fileID: -8584211176881523177}
   m_Layer: 0
   m_Name: MP40
   m_TagString: Gun
@@ -14567,6 +14567,8 @@ MonoBehaviour:
   weaponName: mp40
   attackRate: 8
   canAttack: 0
+  isFocused: 0
+  moveMode: 0
   reloadTime: 3
   reloadProgress: 0
   curAmmo: 0
@@ -14593,11 +14595,23 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1730349901870924445}
+  - {fileID: -8584211176881523177}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1730349901870924445
+--- !u!114 &646401083724792352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6730782637670633804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8584211176881523177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14611,9 +14625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionModel:
     SynchronizeEnabled: 0
-    TeleportEnabled: 0
+    TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 3
+    InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
@@ -14622,7 +14636,7 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 1
+    InterpolateOption: 2
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5
   m_ScaleModel:
@@ -14630,18 +14644,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &646401083724792352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6730782637670633804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6922011875175345967
 GameObject:
   m_ObjectHideFlags: 0

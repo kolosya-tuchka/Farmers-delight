@@ -3,8 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
+interface IMPDamage
 {
+    void TakeDamage(float damage, int playerIndex);
+}
+
+public interface IMPEnemy
+{
+    void Die(int playerIndex);
+}
+
+public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable, IMPDamage
+{
+    protected IMPEnemy iEnemy;
     protected MPManager mp;
     protected Player killer;
     protected PhotonView view;
@@ -30,10 +41,14 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
 
     public override void OnStart()
     {
-        enemy = GetComponent<MPEnemy>();
+        enemy = GetComponent<Enemy>();
         mp = FindObjectOfType<MPManager>();
         view = GetComponent<PhotonView>();
         base.OnStart();
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            agent.enabled = false;
+        }
     }
 
     void FixedUpdate()
@@ -46,29 +61,25 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
         }
     }
 
-    public virtual void TakeDamage(float damage, Photon.Realtime.Player player)
+    [PunRPC]
+    public virtual void TakeDamage(float damage, int playerIndex)
     {
+        var player = MPManager.players[playerIndex].GetComponent<PhotonView>();
         enemy.behaviour = Enemy.Behaviour.attacker;
         enemy.hp.healPoints -= damage;
         anim.hit = true;
 
         if (enemy.hp.healPoints <= 0 && enemy.state != Enemy.State.dead)
         {
-            foreach (var p in mp.players)
+            if (player.IsMine)
             {
-                if (p.GetComponent<PhotonView>().Owner == player)
+                killer = MPManager.players[playerIndex].GetComponent<Player>();
+                iEnemy.Die(playerIndex);
+                view.RPC("Die", RpcTarget.Others, playerIndex);
+                var rounds = manager.GetComponent<RoundManager>();
+                if (rounds.roundType == RoundManager.RoundType.simple)
                 {
-                    killer = mp.player.GetComponent<Player>();
-                    iEnemy.Die(killer);
-                    view.RPC("Die", RpcTarget.Others, mp.playerIndex);
-                    var rounds = manager.GetComponent<RoundManager>();
-                    if (rounds.roundType == RoundManager.RoundType.simple)
-                    {
-                        Drop();
-                    }
-                    MPEnemy.DestroyAfterTime(view, 30);
-                    Destroy(this);
-                    break;
+                    Drop();
                 }
             }
         }
@@ -77,10 +88,10 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     public Transform FindNearestPlayer()
     {
         Transform playerTransform = null;
-        float minDistance = Vector2.Distance(transform.position, mp.players[0].transform.position);
-        foreach (var player in mp.players)
+        float minDistance = Vector2.Distance(transform.position, MPManager.players[0].transform.position);
+        foreach (var player in MPManager.players)
         {
-            if (!player.activeInHierarchy || player == null) continue;
+            if (player == null || !player.activeInHierarchy) continue;
 
             float distance = Vector2.Distance(transform.position, player.transform.position);
             if (distance < minDistance || playerTransform == null)
@@ -103,7 +114,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
     [PunRPC]
     public void MPAttack()
     {
-        if (!player.GetComponent<PhotonView>().IsMine) return;
+        if (player && !player.GetComponent<PhotonView>().IsMine) return;
         mp.player.GetComponent<MPPlayerController>().TakeDamage(enemy.damage);
     }
 
@@ -113,18 +124,18 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
         base.Drop();
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public virtual void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             stream.SendNext(rend.flipX);
-            stream.SendNext(def.GetComponent<HP>().healPoints);
+            stream.SendNext(def.hp.healPoints);
             stream.SendNext(anim.isAttack);
         }
         else if (stream.IsReading)
         {
             rend.flipX = (bool)stream.ReceiveNext();
-            def.GetComponent<HP>().healPoints = (float)stream.ReceiveNext();
+            def.hp.healPoints = (float)stream.ReceiveNext();
             anim.isAttack = (bool)stream.ReceiveNext();
         }
     }

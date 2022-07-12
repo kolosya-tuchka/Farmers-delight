@@ -8,7 +8,7 @@ public class MPGunSale : GunSale
 {
     PhotonView view;
     MPManager mp;
-    string mpPath = "Multiplayer/Guns/";
+    [SerializeField] string mpPath = "Multiplayer/Guns/";
     bool canBuy;
     void Start()
     {
@@ -18,9 +18,13 @@ public class MPGunSale : GunSale
         view = player.GetComponent<PhotonView>();
 
         sign = GetComponent<SaleSign>();
-        image.sprite = sign.item.GetComponent<Gun>().model.sprite;
+        image.sprite = sign.item.GetComponent<Weapon>().model.sprite;
         text.text = sign.cost.ToString();
         text.gameObject.SetActive(false);
+        if (weaponUI == null)
+        {
+            weaponUI = FindObjectOfType<GunManager>();
+        }
     }
 
     void Update()
@@ -54,22 +58,28 @@ public class MPGunSale : GunSale
         base.Check();
        
     }
-
-    [PunRPC]
+    
     protected override void Buy()
     {
         var pl = player.GetComponent<Player>();
         var gun = PhotonNetwork.Instantiate(mpPath + sign.item.name, player.transform.position, Quaternion.identity);
+        int curGun = pl.currentGun;
         gun.transform.parent = pl.weaponsPrefab.transform;
-        gun.transform.localPosition = gun.GetComponent<Gun>().localPos;
+        gun.transform.localPosition = gun.GetComponent<Weapon>().localPos;
         if (pl.gunCapacity == pl.weapons.Count)
         {
-            PhotonNetwork.Destroy(pl.weapons[pl.currentGun].gameObject);
-            pl.weapons.RemoveAt(pl.currentGun);
+            if (curGun != 0) PhotonNetwork.Destroy(pl.weapons[curGun].gameObject);
+            else pl.weapons[curGun].gameObject.SetActive(false);
+            pl.weapons[curGun] = gun.GetComponent<Weapon>();
+            pl.currentGun = (pl.gunCapacity + curGun - 1) % pl.gunCapacity;
         }
-        pl.weapons.Add(gun.GetComponent<Gun>());
-        pl.currentGun = pl.weapons.Capacity - 2;
-        gun.GetComponent<PhotonView>().RPC("Sync", RpcTarget.Others, mp.playerIndex);
+        else
+        {
+            pl.weapons.Add(gun.GetComponent<Weapon>());
+            pl.currentGun = pl.weapons.Count - 2;
+        }
+        gun.GetComponent<Weapon>().owner = pl;
+        gun.GetComponent<PhotonView>().RPC("Sync", RpcTarget.Others, MPManager.playerIndex, curGun);
         weaponUI.ImageUpdate();
 
         pl.coins -= sign.cost;

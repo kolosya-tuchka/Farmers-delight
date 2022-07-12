@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Directioner : MonoBehaviour
+public interface IDamage
+{
+    void TakeDamage(float damage);
+}
+
+public class Directioner : MonoBehaviour, IDamage
 {
     protected Rigidbody2D dir;
     protected Enemy enemy;
@@ -11,6 +16,7 @@ public class Directioner : MonoBehaviour
     protected float repRate, timeOfPersuit, maxTimeOfPersuit;
     protected Player player;
     protected DefObj def;
+    protected Transform defPoint;
     protected EnemyAnimations anim;
     protected EnemyManager manager;
     [SerializeField] protected SpriteRenderer rend;
@@ -39,6 +45,7 @@ public class Directioner : MonoBehaviour
         enemy.state = Enemy.State.alive;
         manager = FindObjectOfType<EnemyManager>();
         anim = GetComponent<EnemyAnimations>();
+        defPoint = def.GetDestinationPoint();
     }
 
     private void FixedUpdate()
@@ -101,13 +108,11 @@ public class Directioner : MonoBehaviour
 
     public virtual void PathToDef()
     {
-
         if (enemy.behaviour == Enemy.Behaviour.destroyer && def != null)
         {
             if (player != null && Vector2.Distance(player.transform.position, gameObject.transform.position) <= enemy.seeDistance)
                 enemy.behaviour = Enemy.Behaviour.attacker;
-            Vector2 dest = def.transform.position;
-            agent.destination = new Vector2(Random.Range(dest.x - 3, dest.x + 3), Random.Range(dest.y, dest.y + 2));
+            agent.destination = defPoint.position;
             if (enemy.canDestroy)
             {
                 anim.isAttack = true;
@@ -115,7 +120,6 @@ public class Directioner : MonoBehaviour
                 def.hp.delayTimeLeft = def.hp.delayOfRegeneration;
                 def.hp.healPoints -= enemy.damage;
                 timeOfPersuit = 0;
-                enemy.canDestroy = false;
             }
             rend.flipX = agent.destination.x < transform.position.x;
         }
@@ -133,8 +137,7 @@ public class Directioner : MonoBehaviour
                 Attack();
                 repRate = 1f;
             }
-            else if (agent.destination != null) rend.flipX = agent.destination.x < transform.position.x;
-            else rend.flipX = dir.velocity.x < 0;
+            rend.flipX = agent.destination.x < transform.position.x;
         }
     }
 
