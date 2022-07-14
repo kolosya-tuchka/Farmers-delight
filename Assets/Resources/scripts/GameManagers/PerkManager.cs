@@ -71,7 +71,10 @@ public class PerkManager : MonoBehaviour
         if (collision.gameObject == perks.player.gameObject)
         {
             if (perks.player.target == gameObject)
+            {
                 perks.tips.UpdateTip(null);
+                perks.player.target = null;
+            }
         }
     }
 

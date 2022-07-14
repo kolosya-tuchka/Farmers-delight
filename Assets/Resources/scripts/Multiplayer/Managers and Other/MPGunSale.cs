@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -38,8 +39,8 @@ public class MPGunSale : GunSale
         {
             text.gameObject.SetActive(true);
             canBuy = true;
+            player.GetComponent<Player>().target = gameObject;
         }
-        player.GetComponent<Player>().target = gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -48,6 +49,11 @@ public class MPGunSale : GunSale
         {
             canBuy = false;
             text.gameObject.SetActive(false);
+            var p = player.GetComponent<Player>();
+            if (p.target == gameObject)
+            {
+                p.target = null;
+            }
         }
     }
 

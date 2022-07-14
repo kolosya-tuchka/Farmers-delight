@@ -33,6 +33,7 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
 
         if (PhotonNetwork.IsMasterClient)
         {
+            view.RPC("SyncOnStart", RpcTarget.Others, GetComponent<HP>().maxHP);
             StartCoroutine(Move());
         }
         enemy.coins += Random.Range(-3, 6);
@@ -139,6 +140,14 @@ public class MPDirectioner : Directioner, IPunOwnershipCallbacks, IPunObservable
             anim.isAttack = (bool)stream.ReceiveNext();
         }
     }
+    
+    [PunRPC]
+    public virtual void SyncOnStart(float maxHP)
+    {
+        var hp = GetComponent<HP>();
+        hp.maxHP = hp.healPoints = maxHP;
+    }
+    
     public void OnOwnershipRequest(PhotonView targetView, Photon.Realtime.Player requestingPlayer)
     {
         throw new System.NotImplementedException();

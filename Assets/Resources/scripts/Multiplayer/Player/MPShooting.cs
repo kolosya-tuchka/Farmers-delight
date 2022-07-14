@@ -23,7 +23,7 @@ public class MPShooting : Shooting
             gun.canAttack = false;
         }
 
-        if (!gun.canAttack || gun.isReloading) return;
+        if (!gun.canAttack || gun.isReloading || gun.curAmmo <= 0) return;
 
         var _bullet = PhotonNetwork.Instantiate(mpPath+bullet.name, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
         _bullet.transform.SetParent(GameObject.Find("Bullets").transform);

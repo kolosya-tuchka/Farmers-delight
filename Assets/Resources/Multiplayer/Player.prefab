@@ -6068,8 +6068,8 @@ MonoBehaviour:
   m_PositionModel:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 1
-    InterpolateOption: 1
+    TeleportIfDistanceGreaterThan: 2
+    InterpolateOption: 2
     InterpolateMoveTowardsSpeed: 4
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 1

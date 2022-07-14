@@ -46,10 +46,15 @@ public class RoundManager : MonoBehaviour
             round++;
             manager.allEnemies += manager.allEnemies / 5;
             manager.enemiesOnScene += manager.enemiesOnScene / 5;
-            hp *= 1.2f;
+
+            float x = (float)round / 5f + 0.8f;
+            hp = -4 / Mathf.Sqrt(x) + 5;
+            
             manager.allEnemiesNow = manager.allEnemies;
             ChooseRoundType();
             timeToNextRound = 60;
+
+            hp = Mathf.Clamp(hp, 1, 5f);
         }
     }
 

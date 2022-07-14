@@ -19,6 +19,7 @@ public class MPBossController : MPDirectioner, IMPDamage, IPunObservable
         OnStart();
         if (PhotonNetwork.IsMasterClient)
         {
+            view.RPC("SyncOnStart", RpcTarget.Others, GetComponent<HP>().maxHP);
             StartCoroutine(Move());
         }
     }
@@ -66,18 +67,23 @@ public class MPBossController : MPDirectioner, IMPDamage, IPunObservable
         }
     }
 
+    [PunRPC]
+    public override void SyncOnStart(float maxHP)
+    {
+        var hp = GetComponent<HP>();
+        hp.maxHP = hp.healPoints = maxHP;
+    }
+    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             stream.SendNext(rend.flipX);
-            stream.SendNext(def.hp.healPoints);
             stream.SendNext(anim.isAttack);
         }
         else if (stream.IsReading)
         {
             rend.flipX = (bool)stream.ReceiveNext();
-            def.hp.healPoints = (float)stream.ReceiveNext();
             anim.isAttack = (bool)stream.ReceiveNext();
         }
     }

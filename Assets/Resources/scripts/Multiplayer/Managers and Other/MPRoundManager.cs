@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class MPRoundManager : RoundManager
+public class MPRoundManager : RoundManager, IPunObservable
 {
     PhotonView view;
     MPManager mp;
@@ -85,5 +85,17 @@ public class MPRoundManager : RoundManager
         manager.enemiesOnSceneNow = (int)parameters[1];
         round = (int)parameters[2];
         roundType = (RoundType)parameters[3];
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(isBreak);   
+        }
+        else
+        {
+            isBreak = (bool)stream.ReceiveNext();
+        }
     }
 }

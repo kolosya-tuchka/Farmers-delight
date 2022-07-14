@@ -9,7 +9,6 @@ public class Shooting : MonoBehaviour, IAttack
     protected Gun gun;
     protected DefaultMeleeWeapon defWeapon;
     public MMFeedbacks shotFeedback;
-    protected 
 
     void Start()
     {
@@ -26,7 +25,7 @@ public class Shooting : MonoBehaviour, IAttack
             gun.canAttack = false;
         }
 
-        if (!gun.canAttack || gun.isReloading) return;
+        if (!gun.canAttack || gun.isReloading || gun.curAmmo <= 0) return;
 
         var _bullet = Instantiate(bullet, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
         _bullet.transform.SetParent(GameObject.Find("Bullets").transform);
