@@ -44,6 +44,11 @@ public class MPManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         player.GetComponent<PhotonView>().RPC("SyncOnStart", RpcTarget.Others, player.name);
+
+        foreach (var model in FindObjectsOfType<SkinSwapper>())
+        {
+            model.SyncSkins();
+        }
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)

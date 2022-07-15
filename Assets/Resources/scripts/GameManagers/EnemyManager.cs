@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
             {
                 SpawnEnemy();
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1 / (allEnemies * 0.1f ));
         }
     }
 
@@ -88,6 +88,6 @@ public class EnemyManager : MonoBehaviour
 
     bool predicate()
     {
-        return enemiesOnSceneNow < 4 + bossManager.bossCount;
+        return enemiesOnSceneNow < 4 + bossManager.bossCount * 2;
     }
 }

@@ -111323,7 +111323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemiesNow: 0
   allEnemies: 9
-  enemiesOnScene: 6
+  enemiesOnScene: 8
   enemiesOnSceneNow: 0
   enemy: {fileID: 6369749513770854254, guid: a1a984f444f88704fa9f422167119501, type: 3}
   enemies:

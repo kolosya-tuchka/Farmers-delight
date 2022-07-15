@@ -31,7 +31,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         inputNick.text = PhotonNetwork.NickName;
 
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.GameVersion = "Beta 1.3";
+        PhotonNetwork.GameVersion = "Beta 1.4";
         PhotonNetwork.ConnectUsingSettings();
         CheckButtons();
     }

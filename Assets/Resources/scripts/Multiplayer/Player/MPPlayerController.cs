@@ -74,6 +74,7 @@ public class MPPlayerController : PlayerController, IPunObservable
         {
             stream.SendNext(player.rend.flipX);
             stream.SendNext(player.health.healPoints);
+            stream.SendNext(player.health.maxHP);
             foreach (var g in player.weapons)
             {
                 stream.SendNext(g.gameObject.activeInHierarchy);
@@ -85,6 +86,7 @@ public class MPPlayerController : PlayerController, IPunObservable
         {
             player.rend.flipX = (bool)stream.ReceiveNext();
             player.health.healPoints = (float)stream.ReceiveNext();
+            player.health.maxHP = (float)stream.ReceiveNext();
             foreach (var g in player.weapons)
             {
                 g?.gameObject.SetActive((bool)stream.ReceiveNext());
