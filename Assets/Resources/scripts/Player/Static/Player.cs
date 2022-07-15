@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed, reloadBoost, shootingBoost, speedBoost;
+    public float curSpeed, speed, reloadBoost, shootingBoost, speedBoost;
     public int kills, coins;
     public List<Weapon> weapons;
     public int currentGun, gunCapacity;
@@ -24,10 +24,17 @@ public class Player : MonoBehaviour
         speedBoost = 1;
         isAlive = true;
 
+        ResetSpeed();
+        
         health = GetComponent<HP>();
         anim = GetComponent<PlayerAnimations>();
     }
 
+    public void ResetSpeed()
+    {
+        curSpeed = speed;
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, focusDistance);

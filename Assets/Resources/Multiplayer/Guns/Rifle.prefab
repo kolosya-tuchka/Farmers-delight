@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: cb1919f734bdd264baf9245434d3bdef, type: 3}
   shotFeedback: {fileID: 3859183759744083326}
+  angleSpreading: 2
 --- !u!114 &3410073530914188060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiply: 0.3
 --- !u!114 &8124256005624388689
 MonoBehaviour:
   m_ObjectHideFlags: 0

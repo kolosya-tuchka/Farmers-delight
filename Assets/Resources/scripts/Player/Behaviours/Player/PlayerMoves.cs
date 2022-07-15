@@ -88,7 +88,7 @@ public class PlayerMoves : MonoBehaviour
 
     protected void SetVelocity(Vector2 mvm)
     {
-        rb.velocity = mvm.normalized * player.speed * player.speedBoost;
+        rb.velocity = mvm.normalized * player.curSpeed * player.speedBoost;
     }
 
     protected void OnStart()

@@ -4828,6 +4828,7 @@ GameObject:
   - component: {fileID: 8736660408790509814}
   - component: {fileID: -6246204951915052798}
   - component: {fileID: 9017096997002257513}
+  - component: {fileID: 8282930032919825466}
   m_Layer: 0
   m_Name: Minigun Bullet
   m_TagString: Bullet
@@ -4938,6 +4939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f478df87d85901408d53c41abcb8b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  bullet: {fileID: 0}
   speed: 12
   particle: {fileID: 3861231838511625880, guid: d48a96bd450c15a42a78ee18af807b03,
     type: 3}
@@ -4954,7 +4957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeOfFlying: 3
-  damage: 50
+  damage: 45
 --- !u!50 &8736660408790509814
 Rigidbody2D:
   serializedVersion: 4
@@ -5005,7 +5008,41 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8282930032919825466}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8282930032919825466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650540007698195631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 0
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 360
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0

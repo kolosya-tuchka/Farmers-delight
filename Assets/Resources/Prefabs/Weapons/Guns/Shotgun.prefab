@@ -5164,6 +5164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: db251b2918318444093da77dada1dd9f, type: 3}
   shotFeedback: {fileID: 7154259432697009118}
+  angleSpreading: 0
 --- !u!114 &-6402727803527836529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5176,6 +5177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiply: 1
 --- !u!1 &6693039268168082164
 GameObject:
   m_ObjectHideFlags: 0

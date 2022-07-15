@@ -14640,11 +14640,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf193a55341924d92d853ee480c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   localPos: {x: 0, y: 0, z: 0}
   model: {fileID: 2238179466530461850}
   weaponName: pistol
   attackRate: 4
   canAttack: 1
+  isFocused: 0
+  moveMode: 0
   reloadTime: 1
   reloadProgress: 0
   curAmmo: 0
@@ -14665,8 +14668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: 0810cfbf34026c04bb48c57df4d96ba8, type: 3}
-  gun: {fileID: 0}
   shotFeedback: {fileID: 3889277748198449034}
+  angleSpreading: 0
 --- !u!114 &860288413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14679,6 +14682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiply: 1
 --- !u!1 &6749157955388823572
 GameObject:
   m_ObjectHideFlags: 0

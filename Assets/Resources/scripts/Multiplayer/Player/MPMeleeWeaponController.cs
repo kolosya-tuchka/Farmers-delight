@@ -16,7 +16,7 @@ public class MPMeleeWeaponController : MeleeWeaponController
         mp = FindObjectOfType<MPManager>();
         if (weapon.owner != mp.player.GetComponent<Player>()) Destroy(this);
 
-        curSpeed = weapon.owner.speed;
+        curSpeed = weapon.owner.curSpeed;
         weapon.owner.GetComponent<MPPlayerController>().GunSwap();
     }
 
@@ -27,7 +27,7 @@ public class MPMeleeWeaponController : MeleeWeaponController
 
     private void OnDisable()
     {
-        weapon.owner.speed = curSpeed;
+        weapon.owner.curSpeed = curSpeed;
     }
 
     [PunRPC]

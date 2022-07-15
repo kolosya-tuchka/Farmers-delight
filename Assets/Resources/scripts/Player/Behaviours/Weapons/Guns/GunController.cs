@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour, IReloadable
 {
     protected Gun gun;
+    public float speedMultiply;
     void Awake()
     {
         gun = GetComponent<Gun>();
@@ -44,21 +45,25 @@ public class GunController : MonoBehaviour, IReloadable
         {
             yield return null;
             if (!gun.canAttack)
-            {
+            { 
+                gun.owner.curSpeed *= speedMultiply;
                 yield return new WaitForSeconds(1f / gun.attackRate / gun.owner.shootingBoost);
                 gun.canAttack = true;
+                gun.owner.ResetSpeed();
             }
         }
     }
 
     private void OnEnable()
     {
+        gun.owner.ResetSpeed();
         StartCoroutine(ReloadCheck());
         StartCoroutine(DelayCheck());
     }
 
     private void OnDisable()
     {
+        gun.owner.ResetSpeed();
         gun.isReloading = false;
     }
 

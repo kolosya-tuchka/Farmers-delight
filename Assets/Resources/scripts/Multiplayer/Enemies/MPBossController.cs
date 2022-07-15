@@ -60,10 +60,10 @@ public class MPBossController : MPDirectioner, IMPDamage, IPunObservable
                     killer = mp.player.GetComponent<Player>();
                     iEnemy.Die(playerIndex);
                     view.RPC("Die", RpcTarget.Others, playerIndex);
-                    Drop();
                     break;
                 }
             }
+            Drop();
         }
     }
 

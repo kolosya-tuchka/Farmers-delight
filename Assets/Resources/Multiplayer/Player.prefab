@@ -5939,6 +5939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707e6298e91aaf34cb0c2e74cffc69d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curSpeed: 0
   speed: 4
   reloadBoost: 0
   shootingBoost: 0

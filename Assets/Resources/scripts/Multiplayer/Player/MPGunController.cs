@@ -27,6 +27,7 @@ public class MPGunController : GunController
 
     private void OnDisable()
     {
+        gun.owner.ResetSpeed();
         gun.isReloading = false;
     }
 

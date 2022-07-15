@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour, IAttack
     protected DefaultMeleeWeapon defWeapon;
     public MMFeedbacks shotFeedback;
 
+    public float angleSpreading;
+
     void Start()
     {
         gun = GetComponent<Gun>();
@@ -29,8 +31,14 @@ public class Shooting : MonoBehaviour, IAttack
 
         var _bullet = Instantiate(bullet, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
         _bullet.transform.SetParent(GameObject.Find("Bullets").transform);
+        SpreadAngle(_bullet);
         gun.canAttack = false;
         gun.curAmmo--;
         shotFeedback.PlayFeedbacks(transform.position);
+    }
+
+    protected void SpreadAngle(GameObject bullet)
+    {
+        bullet.transform.eulerAngles += Vector3.forward * Random.Range(-angleSpreading, angleSpreading);
     }
 }

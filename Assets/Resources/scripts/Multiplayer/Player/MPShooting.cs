@@ -27,6 +27,7 @@ public class MPShooting : Shooting
 
         var _bullet = PhotonNetwork.Instantiate(mpPath+bullet.name, gameObject.transform.position + gameObject.transform.right / 2, gameObject.transform.rotation);
         _bullet.transform.SetParent(GameObject.Find("Bullets").transform);
+        SpreadAngle(_bullet);
         gun.canAttack = false;
         gun.curAmmo--;
         shotFeedback.PlayFeedbacks(transform.position);

@@ -15,7 +15,7 @@ public class MeleeWeaponController : MonoBehaviour
 
     private void Start()
     {
-        curSpeed = weapon.owner.speed;
+        curSpeed = weapon.owner.curSpeed;
         weapon.owner.GetComponent<PlayerController>().GunSwap();
     }
     
@@ -25,12 +25,12 @@ public class MeleeWeaponController : MonoBehaviour
         {
             if (!weapon.canAttack)
             {
-                curSpeed = weapon.owner.speed;
-                weapon.owner.speed /= 2;
+                curSpeed = weapon.owner.curSpeed;
+                weapon.owner.curSpeed /= 2;
                 yield return new WaitForSeconds(1f / weapon.attackRate / weapon.owner.shootingBoost);
                 weapon.canAttack = true;
                 weapon.isFocused = false;
-                weapon.owner.speed = curSpeed;
+                weapon.owner.curSpeed = curSpeed;
             }
             yield return null;
         }
@@ -43,6 +43,6 @@ public class MeleeWeaponController : MonoBehaviour
 
     private void OnDisable()
     {
-        weapon.owner.speed = curSpeed;
+        weapon.owner.curSpeed = curSpeed;
     }
 }

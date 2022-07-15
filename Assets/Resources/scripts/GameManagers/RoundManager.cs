@@ -48,7 +48,7 @@ public class RoundManager : MonoBehaviour
             manager.enemiesOnScene += manager.enemiesOnScene / 5;
 
             float x = (float)round / 5f + 0.8f;
-            hp = -4 / Mathf.Sqrt(x) + 5;
+            hp = -5 / Mathf.Sqrt(x) + 6;
             
             manager.allEnemiesNow = manager.allEnemies;
             ChooseRoundType();

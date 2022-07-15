@@ -4940,7 +4940,7 @@ SpriteRenderer:
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.3333334, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
@@ -15056,6 +15056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: ee095d0abeaa80d42b4be03df1514ca5, type: 3}
   shotFeedback: {fileID: 5564270144518170936}
+  angleSpreading: 0
 --- !u!114 &189864390512392837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15095,3 +15096,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f69c10d217c3947b0bbdc321e964e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiply: 1

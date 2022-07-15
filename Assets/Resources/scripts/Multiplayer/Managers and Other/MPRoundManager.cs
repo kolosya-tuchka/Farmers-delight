@@ -61,6 +61,9 @@ public class MPRoundManager : RoundManager, IPunObservable
 
     public void StartGame()
     {
+        int playerCount = MPManager.players.Count;
+        manager.allEnemies = manager.allEnemies * (playerCount + 1) / 2;
+        manager.enemiesOnScene = manager.enemiesOnScene * (playerCount + 1) / 2;
         StartCoroutine(CountDown());
         NextRound();
     }

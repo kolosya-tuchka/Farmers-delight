@@ -14966,6 +14966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6650540007698195631, guid: ee095d0abeaa80d42b4be03df1514ca5, type: 3}
   shotFeedback: {fileID: 5564270144518170936}
+  angleSpreading: 15
 --- !u!114 &189864390512392837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14991,7 +14992,7 @@ MonoBehaviour:
   curAmmo: 0
   maxAmmo: 100
   magazines: 0
-  maxMagazines: 6
+  maxMagazines: 5
   isReloading: 0
 --- !u!114 &-2892456659699590412
 MonoBehaviour:
@@ -15028,6 +15029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b260b9cd4bb8b0549b004c1e4d3eff23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiply: 0.2
 --- !u!114 &-770930021369243949
 MonoBehaviour:
   m_ObjectHideFlags: 0
