@@ -1,0 +1,1315 @@
+fileFormatVersion: 2
+guid: c25fe788470a86d428fe143b1c946c40
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3870613992512985710
+    second: tilableFloorsAndWalls_0
+  - first:
+      213: -2215382329395871907
+    second: tilableFloorsAndWalls_1
+  - first:
+      213: -1750375768569697473
+    second: tilableFloorsAndWalls_2
+  - first:
+      213: -1014158296700201969
+    second: tilableFloorsAndWalls_3
+  - first:
+      213: 3156848659913739105
+    second: tilableFloorsAndWalls_4
+  - first:
+      213: -8808311263087942411
+    second: tilableFloorsAndWalls_5
+  - first:
+      213: 893601995500415620
+    second: tilableFloorsAndWalls_6
+  - first:
+      213: 8304032422666458043
+    second: tilableFloorsAndWalls_7
+  - first:
+      213: -3113290257614251285
+    second: tilableFloorsAndWalls_8
+  - first:
+      213: 2738315595920927873
+    second: tilableFloorsAndWalls_9
+  - first:
+      213: -1947927683738689105
+    second: tilableFloorsAndWalls_10
+  - first:
+      213: 786167734817875384
+    second: tilableFloorsAndWalls_11
+  - first:
+      213: 6037702962799223720
+    second: tilableFloorsAndWalls_12
+  - first:
+      213: -2947493454395865024
+    second: tilableFloorsAndWalls_13
+  - first:
+      213: 1040990033258204435
+    second: tilableFloorsAndWalls_14
+  - first:
+      213: 1390784313868914310
+    second: tilableFloorsAndWalls_15
+  - first:
+      213: 6866463102726693617
+    second: tilableFloorsAndWalls_16
+  - first:
+      213: 7069451943189086188
+    second: tilableFloorsAndWalls_17
+  - first:
+      213: -8694367536181459417
+    second: tilableFloorsAndWalls_18
+  - first:
+      213: -2564618368441597873
+    second: tilableFloorsAndWalls_19
+  - first:
+      213: 4634677295590957750
+    second: tilableFloorsAndWalls_20
+  - first:
+      213: 8887750384256951786
+    second: tilableFloorsAndWalls_21
+  - first:
+      213: 8784595517725274648
+    second: tilableFloorsAndWalls_22
+  - first:
+      213: 4305974782952287150
+    second: tilableFloorsAndWalls_23
+  - first:
+      213: -8084886863571886986
+    second: tilableFloorsAndWalls_24
+  - first:
+      213: 5896700452931449692
+    second: tilableFloorsAndWalls_25
+  - first:
+      213: -2361470463188213758
+    second: tilableFloorsAndWalls_26
+  - first:
+      213: 3247600193947333742
+    second: tilableFloorsAndWalls_27
+  - first:
+      213: 120361297405775175
+    second: tilableFloorsAndWalls_28
+  - first:
+      213: 8183847727956962112
+    second: tilableFloorsAndWalls_29
+  - first:
+      213: -8774368030319775669
+    second: tilableFloorsAndWalls_30
+  - first:
+      213: -7515379323294065727
+    second: tilableFloorsAndWalls_31
+  - first:
+      213: -8563173857413498744
+    second: tilableFloorsAndWalls_32
+  - first:
+      213: 7456783772573988456
+    second: tilableFloorsAndWalls_33
+  - first:
+      213: -8671870695584182340
+    second: tilableFloorsAndWalls_34
+  - first:
+      213: 4084711142406663335
+    second: tilableFloorsAndWalls_35
+  - first:
+      213: 6054897573160187023
+    second: tilableFloorsAndWalls_36
+  - first:
+      213: 8218577983918081284
+    second: tilableFloorsAndWalls_37
+  - first:
+      213: 1344724827749263194
+    second: tilableFloorsAndWalls_38
+  - first:
+      213: 4731116554024309691
+    second: tilableFloorsAndWalls_39
+  - first:
+      213: 1353795523146837539
+    second: tilableFloorsAndWalls_40
+  - first:
+      213: -5216647615065422052
+    second: tilableFloorsAndWalls_41
+  - first:
+      213: -619367762085519643
+    second: tilableFloorsAndWalls_42
+  - first:
+      213: 3687362569593641467
+    second: tilableFloorsAndWalls_43
+  - first:
+      213: 7217121909495501995
+    second: tilableFloorsAndWalls_44
+  - first:
+      213: 161138554876697191
+    second: tilableFloorsAndWalls_45
+  - first:
+      213: 1917912446883847878
+    second: tilableFloorsAndWalls_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a94663bee27b530800000000000000
+      internalID: 3870613992512985710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f7eae42816141e0800000000000000
+      internalID: -2215382329395871907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ba3fa238a65b7e0800000000000000
+      internalID: -1750375768569697473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 161
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f045b23076cfce1f0800000000000000
+      internalID: -1014158296700201969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 161
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b83d761216fcb20800000000000000
+      internalID: 3156848659913739105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 161
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4229c139792c580800000000000000
+      internalID: -8808311263087942411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 161
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ae168c746b66c00800000000000000
+      internalID: 893601995500415620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 161
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb35c54ed79dd3370800000000000000
+      internalID: 8304032422666458043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bead730710f5bc4d0800000000000000
+      internalID: -3113290257614251285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c67c9b683700620800000000000000
+      internalID: 2738315595920927873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa12b9a971297f4e0800000000000000
+      internalID: -1947927683738689105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b561b7b36709ea00800000000000000
+      internalID: 786167734817875384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_12
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3a8f40bda3ac350800000000000000
+      internalID: 6037702962799223720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_13
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 145
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04802f8d1566817d0800000000000000
+      internalID: -2947493454395865024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31dc31b7be6527e00800000000000000
+      internalID: 1040990033258204435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 129
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e875bf6fe0d4310800000000000000
+      internalID: 1390784313868914310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_16
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 129
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2e955dfc39a4f50800000000000000
+      internalID: 6866463102726693617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 129
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceffa76361dbb1260800000000000000
+      internalID: 7069451943189086188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 113
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72647336ac6675780800000000000000
+      internalID: -8694367536181459417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f40c89c8e25a86cd0800000000000000
+      internalID: -2564618368441597873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 66
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2644cd17ea15040800000000000000
+      internalID: 4634677295590957750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 65
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae52af992e1a75b70800000000000000
+      internalID: 8887750384256951786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 65
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812f081a41729e970800000000000000
+      internalID: 8784595517725274648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 82
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab29a54045e1cb30800000000000000
+      internalID: 4305974782952287150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_24
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 82
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c539fab36bccf80800000000000000
+      internalID: -8084886863571886986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 81
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c533dd3e1d945d150800000000000000
+      internalID: 5896700452931449692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 81
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200e616102f5a3fd0800000000000000
+      internalID: -2361470463188213758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 65
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6478bc7b2bc11d20800000000000000
+      internalID: 3247600193947333742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_28
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 65
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d839856fb9ba100800000000000000
+      internalID: 120361297405775175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 65
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b23c0162ed29170800000000000000
+      internalID: 8183847727956962112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_30
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 65
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40fe38d3ce2b3680800000000000000
+      internalID: -8774368030319775669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cbddbad25204b790800000000000000
+      internalID: -7515379323294065727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888f4fe0fbe792980800000000000000
+      internalID: -8563173857413498744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_33
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8667b2b5551db7760800000000000000
+      internalID: 7456783772573988456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_34
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 49
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbfc5934c8357a780800000000000000
+      internalID: -8671870695584182340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 33
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7acaa3d642fcfa830800000000000000
+      internalID: 4084711142406663335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 33
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8476973341570450800000000000000
+      internalID: 6054897573160187023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 33
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 405884ae1214e0270800000000000000
+      internalID: 8218577983918081284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 33
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57a4ae2b1c69a210800000000000000
+      internalID: 1344724827749263194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3d699707d48a140800000000000000
+      internalID: 4731116554024309691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_40
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e6ea70bd5a9c210800000000000000
+      internalID: 1353795523146837539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_41
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1703a112aeba97b0800000000000000
+      internalID: -5216647615065422052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 17
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee509b4d409767f0800000000000000
+      internalID: -619367762085519643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf953b678b42c2330800000000000000
+      internalID: 3687362569593641467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_44
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba41b24832e582460800000000000000
+      internalID: 7217121909495501995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_45
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a9b0379aa7c3200800000000000000
+      internalID: 161138554876697191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilableFloorsAndWalls_46
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cedfca753bcd9a10800000000000000
+      internalID: 1917912446883847878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      tilableFloorsAndWalls_0: 3870613992512985710
+      tilableFloorsAndWalls_1: -2215382329395871907
+      tilableFloorsAndWalls_10: -1947927683738689105
+      tilableFloorsAndWalls_11: 786167734817875384
+      tilableFloorsAndWalls_12: 6037702962799223720
+      tilableFloorsAndWalls_13: -2947493454395865024
+      tilableFloorsAndWalls_14: 1040990033258204435
+      tilableFloorsAndWalls_15: 1390784313868914310
+      tilableFloorsAndWalls_16: 6866463102726693617
+      tilableFloorsAndWalls_17: 7069451943189086188
+      tilableFloorsAndWalls_18: -8694367536181459417
+      tilableFloorsAndWalls_19: -2564618368441597873
+      tilableFloorsAndWalls_2: -1750375768569697473
+      tilableFloorsAndWalls_20: 4634677295590957750
+      tilableFloorsAndWalls_21: 8887750384256951786
+      tilableFloorsAndWalls_22: 8784595517725274648
+      tilableFloorsAndWalls_23: 4305974782952287150
+      tilableFloorsAndWalls_24: -8084886863571886986
+      tilableFloorsAndWalls_25: 5896700452931449692
+      tilableFloorsAndWalls_26: -2361470463188213758
+      tilableFloorsAndWalls_27: 3247600193947333742
+      tilableFloorsAndWalls_28: 120361297405775175
+      tilableFloorsAndWalls_29: 8183847727956962112
+      tilableFloorsAndWalls_3: -1014158296700201969
+      tilableFloorsAndWalls_30: -8774368030319775669
+      tilableFloorsAndWalls_31: -7515379323294065727
+      tilableFloorsAndWalls_32: -8563173857413498744
+      tilableFloorsAndWalls_33: 7456783772573988456
+      tilableFloorsAndWalls_34: -8671870695584182340
+      tilableFloorsAndWalls_35: 4084711142406663335
+      tilableFloorsAndWalls_36: 6054897573160187023
+      tilableFloorsAndWalls_37: 8218577983918081284
+      tilableFloorsAndWalls_38: 1344724827749263194
+      tilableFloorsAndWalls_39: 4731116554024309691
+      tilableFloorsAndWalls_4: 3156848659913739105
+      tilableFloorsAndWalls_40: 1353795523146837539
+      tilableFloorsAndWalls_41: -5216647615065422052
+      tilableFloorsAndWalls_42: -619367762085519643
+      tilableFloorsAndWalls_43: 3687362569593641467
+      tilableFloorsAndWalls_44: 7217121909495501995
+      tilableFloorsAndWalls_45: 161138554876697191
+      tilableFloorsAndWalls_46: 1917912446883847878
+      tilableFloorsAndWalls_5: -8808311263087942411
+      tilableFloorsAndWalls_6: 893601995500415620
+      tilableFloorsAndWalls_7: 8304032422666458043
+      tilableFloorsAndWalls_8: -3113290257614251285
+      tilableFloorsAndWalls_9: 2738315595920927873
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
