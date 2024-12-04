@@ -150,7 +150,7 @@ TextureImporter:
       213: 21300096
     second: TileMapAutoRule_Template_48
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -167,9 +167,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -179,8 +182,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -201,10 +204,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -216,6 +224,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -228,6 +237,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -1272,9 +1308,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      TileMapAutoRule_Template_0: 21300000
+      TileMapAutoRule_Template_1: 21300002
+      TileMapAutoRule_Template_10: 21300020
+      TileMapAutoRule_Template_11: 21300022
+      TileMapAutoRule_Template_12: 21300024
+      TileMapAutoRule_Template_13: 21300026
+      TileMapAutoRule_Template_14: 21300028
+      TileMapAutoRule_Template_15: 21300030
+      TileMapAutoRule_Template_16: 21300032
+      TileMapAutoRule_Template_17: 21300034
+      TileMapAutoRule_Template_18: 21300036
+      TileMapAutoRule_Template_19: 21300038
+      TileMapAutoRule_Template_2: 21300004
+      TileMapAutoRule_Template_20: 21300040
+      TileMapAutoRule_Template_21: 21300042
+      TileMapAutoRule_Template_22: 21300044
+      TileMapAutoRule_Template_23: 21300046
+      TileMapAutoRule_Template_24: 21300048
+      TileMapAutoRule_Template_25: 21300050
+      TileMapAutoRule_Template_26: 21300052
+      TileMapAutoRule_Template_27: 21300054
+      TileMapAutoRule_Template_28: 21300056
+      TileMapAutoRule_Template_29: 21300058
+      TileMapAutoRule_Template_3: 21300006
+      TileMapAutoRule_Template_30: 21300060
+      TileMapAutoRule_Template_31: 21300062
+      TileMapAutoRule_Template_32: 21300064
+      TileMapAutoRule_Template_33: 21300066
+      TileMapAutoRule_Template_34: 21300068
+      TileMapAutoRule_Template_35: 21300070
+      TileMapAutoRule_Template_36: 21300072
+      TileMapAutoRule_Template_37: 21300074
+      TileMapAutoRule_Template_38: 21300076
+      TileMapAutoRule_Template_39: 21300078
+      TileMapAutoRule_Template_4: 21300008
+      TileMapAutoRule_Template_40: 21300080
+      TileMapAutoRule_Template_41: 21300082
+      TileMapAutoRule_Template_42: 21300084
+      TileMapAutoRule_Template_43: 21300086
+      TileMapAutoRule_Template_44: 21300088
+      TileMapAutoRule_Template_45: 21300090
+      TileMapAutoRule_Template_46: 21300092
+      TileMapAutoRule_Template_47: 21300094
+      TileMapAutoRule_Template_48: 21300096
+      TileMapAutoRule_Template_5: 21300010
+      TileMapAutoRule_Template_6: 21300012
+      TileMapAutoRule_Template_7: 21300014
+      TileMapAutoRule_Template_8: 21300016
+      TileMapAutoRule_Template_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

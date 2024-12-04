@@ -150,7 +150,7 @@ TextureImporter:
       213: 21300096
     second: Platform_cave_no_slopes_48
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -167,9 +167,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -179,8 +182,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -201,10 +204,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -216,6 +224,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -228,6 +237,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -1272,9 +1308,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Platform_cave_no_slopes_0: 21300000
+      Platform_cave_no_slopes_1: 21300002
+      Platform_cave_no_slopes_10: 21300020
+      Platform_cave_no_slopes_11: 21300022
+      Platform_cave_no_slopes_12: 21300024
+      Platform_cave_no_slopes_13: 21300026
+      Platform_cave_no_slopes_14: 21300028
+      Platform_cave_no_slopes_15: 21300030
+      Platform_cave_no_slopes_16: 21300032
+      Platform_cave_no_slopes_17: 21300034
+      Platform_cave_no_slopes_18: 21300036
+      Platform_cave_no_slopes_19: 21300038
+      Platform_cave_no_slopes_2: 21300004
+      Platform_cave_no_slopes_20: 21300040
+      Platform_cave_no_slopes_21: 21300042
+      Platform_cave_no_slopes_22: 21300044
+      Platform_cave_no_slopes_23: 21300046
+      Platform_cave_no_slopes_24: 21300048
+      Platform_cave_no_slopes_25: 21300050
+      Platform_cave_no_slopes_26: 21300052
+      Platform_cave_no_slopes_27: 21300054
+      Platform_cave_no_slopes_28: 21300056
+      Platform_cave_no_slopes_29: 21300058
+      Platform_cave_no_slopes_3: 21300006
+      Platform_cave_no_slopes_30: 21300060
+      Platform_cave_no_slopes_31: 21300062
+      Platform_cave_no_slopes_32: 21300064
+      Platform_cave_no_slopes_33: 21300066
+      Platform_cave_no_slopes_34: 21300068
+      Platform_cave_no_slopes_35: 21300070
+      Platform_cave_no_slopes_36: 21300072
+      Platform_cave_no_slopes_37: 21300074
+      Platform_cave_no_slopes_38: 21300076
+      Platform_cave_no_slopes_39: 21300078
+      Platform_cave_no_slopes_4: 21300008
+      Platform_cave_no_slopes_40: 21300080
+      Platform_cave_no_slopes_41: 21300082
+      Platform_cave_no_slopes_42: 21300084
+      Platform_cave_no_slopes_43: 21300086
+      Platform_cave_no_slopes_44: 21300088
+      Platform_cave_no_slopes_45: 21300090
+      Platform_cave_no_slopes_46: 21300092
+      Platform_cave_no_slopes_47: 21300094
+      Platform_cave_no_slopes_48: 21300096
+      Platform_cave_no_slopes_5: 21300010
+      Platform_cave_no_slopes_6: 21300012
+      Platform_cave_no_slopes_7: 21300014
+      Platform_cave_no_slopes_8: 21300016
+      Platform_cave_no_slopes_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

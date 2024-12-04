@@ -135,7 +135,7 @@ TextureImporter:
       213: 21300086
     second: HornyBlue_43
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -152,9 +152,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -164,11 +167,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -186,9 +189,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -200,6 +209,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -212,6 +222,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -224,6 +235,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -236,6 +248,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -1175,9 +1188,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      HornyBlue_0: 21300000
+      HornyBlue_1: 21300002
+      HornyBlue_10: 21300020
+      HornyBlue_11: 21300022
+      HornyBlue_12: 21300024
+      HornyBlue_13: 21300026
+      HornyBlue_14: 21300028
+      HornyBlue_15: 21300030
+      HornyBlue_16: 21300032
+      HornyBlue_17: 21300034
+      HornyBlue_18: 21300036
+      HornyBlue_19: 21300038
+      HornyBlue_2: 21300004
+      HornyBlue_20: 21300040
+      HornyBlue_21: 21300042
+      HornyBlue_22: 21300044
+      HornyBlue_23: 21300046
+      HornyBlue_24: 21300048
+      HornyBlue_25: 21300050
+      HornyBlue_26: 21300052
+      HornyBlue_27: 21300054
+      HornyBlue_28: 21300056
+      HornyBlue_29: 21300058
+      HornyBlue_3: 21300006
+      HornyBlue_30: 21300060
+      HornyBlue_31: 21300062
+      HornyBlue_32: 21300064
+      HornyBlue_33: 21300066
+      HornyBlue_34: 21300068
+      HornyBlue_35: 21300070
+      HornyBlue_36: 21300072
+      HornyBlue_37: 21300074
+      HornyBlue_38: 21300076
+      HornyBlue_39: 21300078
+      HornyBlue_4: 21300008
+      HornyBlue_40: 21300080
+      HornyBlue_41: 21300082
+      HornyBlue_42: 21300084
+      HornyBlue_43: 21300086
+      HornyBlue_5: 21300010
+      HornyBlue_6: 21300012
+      HornyBlue_7: 21300014
+      HornyBlue_8: 21300016
+      HornyBlue_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
